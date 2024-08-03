@@ -1,0 +1,1664 @@
+info: [object Object]
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: (38709) Query Service: Listening on port 4002
+info: [object Object]
+info: (38850) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: (39051) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: (39663) Query Service: Listening on port 4002
+info: (39706) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: (39803) Query Service: Listening on port 4002
+info: (39910) Query Service: Listening on port 4002
+info: (40421) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (40843) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (40905) Query Service: Listening on port 4002
+info: (40947) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (41046) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: (41165) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (41347) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (41401) Query Service: Listening on port 4002
+info: (41436) Query Service: Listening on port 4002
+info: (41521) Query Service: Listening on port 4002
+error: {"msg":"The song was not found in the database"}
+info: (41623) Query Service: Listening on port 4002
+info: (41713) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: {"msg":"Successfully retrieved song A with ID 1"}
+info: (41834) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"Successfully retrieved song A with ID 25"}
+info: (41929) Query Service: Listening on port 4002
+info: (41967) Query Service: Listening on port 4002
+info: (42229) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (43040) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (43532) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (43640) Query Service: Listening on port 4002
+info: (43738) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (43844) Query Service: Listening on port 4002
+info: (43889) Query Service: Listening on port 4002
+info: (44472) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (44684) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (44732) Query Service: Listening on port 4002
+info: (44784) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (45036) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (45172) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (45315) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (45782) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"The song A by B was added to the database"}
+info: {"msg":"Successfully retrieved song A with ID 1"}
+info: (45944) Query Service: Listening on port 4002
+info: (46176) Query Service: Listening on port 4002
+info: (46329) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"The song A by B was added to the database"}
+info: (46564) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"The song A by B was added to the database"}
+info: (46861) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"The song A by B was added to the database"}
+info: {"msg":"Successfully deleted song A with song ID 1"}
+error: {"msg":"The song could not be found in the database "}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47037) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: {"msg":"Successfully retrieved song Early Hours with ID 1"}
+info: (47225) Query Service: Listening on port 4002
+info: (47844) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (48125) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (48233) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (48410) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: {"msg":"The song A by B was added to the database"}
+info: (48519) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (48672) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (48732) Query Service: Listening on port 4002
+info: (48770) Query Service: Listening on port 4002
+info: (48807) Query Service: Listening on port 4002
+info: {"msg":"The song A by B was added to the database"}
+info: (52543) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (52694) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (53971) Query Service: Listening on port 4002
+info: (2660) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4876) Query Service: Listening on port 4002
+info: (5082) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (5550) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6018) Query Service: Listening on port 4002
+info: (6066) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6157) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (8365) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (8512) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (8604) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (8767) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (9100) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (9272) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (14963) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (18356) Query Service: Listening on port 4002
+info: (22338) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (22679) Query Service: Listening on port 4002
+error: EventType Error: Please provide an id
+info: (22923) Query Service: Listening on port 4002
+error: EventType Error: Please provide an id
+error: EventType Error: Please provide an id
+info: (23054) Query Service: Listening on port 4002
+info: (23096) Query Service: Listening on port 4002
+info: (23140) Query Service: Listening on port 4002
+info: (23184) Query Service: Listening on port 4002
+info: (23253) Query Service: Listening on port 4002
+info: (23337) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (23385) Query Service: Listening on port 4002
+info: (23428) Query Service: Listening on port 4002
+info: (23500) Query Service: Listening on port 4002
+info: (23601) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (23719) Query Service: Listening on port 4002
+info: (23815) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (24006) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: (24063) Query Service: Listening on port 4002
+info: (24132) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (26231) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (26502) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (26915) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (26992) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27061) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27167) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27236) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27316) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27393) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27481) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27587) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27666) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27767) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27856) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (27929) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28003) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28066) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28153) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28227) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28298) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28435) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28511) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28576) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28631) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (28706) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with song ID 3"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (29658) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (29761) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (29838) Query Service: Listening on port 4002
+info: {"msg":"Successfully deleted song Early Hours with song ID 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: (30070) Query Service: Listening on port 4002
+info: (30169) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (30329) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (31224) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (33190) Query Service: Listening on port 4002
+info: (33253) Query Service: Listening on port 4002
+info: (33296) Query Service: Listening on port 4002
+info: (33341) Query Service: Listening on port 4002
+info: (33382) Query Service: Listening on port 4002
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (34535) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (35248) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (35912) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Mountain Pine with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song A by artist B"}
+info: (37611) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (37891) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song A by artist B"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song A by artist C"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Z by artist Y"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song B by artist C"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song J by artist L"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song E by artist D"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song D by artist E"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Song by artist Fire Squad"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Song 1 by artist Artist 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (39709) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song abc by artist def"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song abc with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Steadfast with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Mountain Pine with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Soula with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Daybreak with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (40240) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (40326) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (40410) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (41426) Query Service: Listening on port 4002
+info: (41472) Query Service: Listening on port 4002
+info: (41540) Query Service: Listening on port 4002
+info: (41585) Query Service: Listening on port 4002
+info: (41648) Query Service: Listening on port 4002
+info: (41721) Query Service: Listening on port 4002
+info: (41849) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (41891) Query Service: Listening on port 4002
+info: (41933) Query Service: Listening on port 4002
+info: (41987) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (42145) Query Service: Listening on port 4002
+info: (42215) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (42448) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (42653) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (42830) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: (43114) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: (43257) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (43890) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (44475) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (44765) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Hope And Wonder by Tobias Voigt was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (44963) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45077) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45156) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45351) Query Service: Listening on port 4002
+info: (45399) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45490) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45583) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45663) Query Service: Listening on port 4002
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45780) Query Service: Listening on port 4002
+info: (45827) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (45888) Query Service: Listening on port 4002
+info: (45936) Query Service: Listening on port 4002
+info: (45986) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (46054) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (46204) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Song 1 by artist Artist 1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"The song was not found in the database"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"The song was not found in the database"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47011) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47109) Query Service: Listening on port 4002
+info: (47181) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47216) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47246) Query Service: Listening on port 4002
+info: (47294) Query Service: Listening on port 4002
+info: (47339) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47645) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47755) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (47915) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48038) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48211) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48281) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48376) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48536) Query Service: Listening on port 4002
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48607) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48714) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (48795) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (49055) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Hope And Wonder by Tobias Voigt was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (49247) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (49414) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Hope And Wonder by Tobias Voigt was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Brand New Day with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Hello by artist Artist"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (49736) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (52701) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (52820) Query Service: Listening on port 4002
+info: (52862) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (53418) Query Service: Listening on port 4002
+info: (53462) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (53635) Query Service: Listening on port 4002
+info: (53723) Query Service: Listening on port 4002
+info: (53775) Query Service: Listening on port 4002
+info: (53818) Query Service: Listening on port 4002
+info: (53867) Query Service: Listening on port 4002
+info: (53907) Query Service: Listening on port 4002
+info: (53947) Query Service: Listening on port 4002
+info: (53996) Query Service: Listening on port 4002
+info: (54059) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (54721) Query Service: Listening on port 4002
+info: (54766) Query Service: Listening on port 4002
+info: (54830) Query Service: Listening on port 4002
+info: (54902) Query Service: Listening on port 4002
+info: (54972) Query Service: Listening on port 4002
+info: (55042) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (55226) Query Service: Listening on port 4002
+info: (55270) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (55322) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (55371) Query Service: Listening on port 4002
+info: (55410) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (55987) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (56043) Query Service: Listening on port 4002
+info: (56090) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (57216) Query Service: Listening on port 4002
+info: (57282) Query Service: Listening on port 4002
+info: (57336) Query Service: Listening on port 4002
+info: (57379) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (57498) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (57706) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (57834) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Mountain Pine with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song A by artist B"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (59423) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63111) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63224) Query Service: Listening on port 4002
+info: (63295) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63408) Query Service: Listening on port 4002
+info: (63517) Query Service: Listening on port 4002
+info: (63582) Query Service: Listening on port 4002
+info: (63636) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63732) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63786) Query Service: Listening on port 4002
+info: (63831) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (63897) Query Service: Listening on port 4002
+info: (63935) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (64375) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+error: {"msg":"ISE: Song could not be found in the database"}
+info: {"msg":"Successfully deleted song Mountain Pine with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (68637) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (68792) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (69121) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (69539) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (69662) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (69832) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (71596) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (73181) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (73517) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (5170) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (7646) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Early Hours by Justin Lee was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (9562) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (11286) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Soula with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (12496) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (14197) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (25446) Query Service: Listening on port 4002
+info: (25447) Query Service: Listening on port 4002
+info: (25448) Query Service: Listening on port 4002
+info: (25450) Query Service: Listening on port 4002
+info: (25452) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Early Hours with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (19992) Query Service: Listening on port 4002
+info: (19989) Query Service: Listening on port 4002
+info: (19993) Query Service: Listening on port 4002
+info: (19994) Query Service: Listening on port 4002
+info: (20010) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (18706) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Brand New Day with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (21061) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Brand New Day with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (3477) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (3927) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4236) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4474) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4575) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4674) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4764) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4852) Query Service: Listening on port 4002
+info: (5238) Query Service: Listening on port 4002
+info: (5652) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6090) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6381) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6678) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (6936) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (7326) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (7628) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Song #1 by artist Artist #1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Brand New Day by Sky Toes was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (13118) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (13551) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Song #1 by artist Artist #1"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (14036) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+error: {"msg":"The song was not found in the database"}
+info: (14491) Query Service: Listening on port 4002
+info: (14818) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (15212) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"message":"Successfully added song Light Meadows by artist Northwestern"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"The song Light Meadows by Northwestern was added to the database"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully deleted song Hope And Wonder with artist name undefined"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: (13150) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: (4114) Query Service: Listening on port 4002
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
+info: {"msg":"Successfully retrieved all songs!"}
