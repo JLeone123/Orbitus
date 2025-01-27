@@ -25,18 +25,23 @@
   "contributors": [],
   "scripts": {
     "dev": "nodemon --watch index.js --watch store.js",
-    "docker-start": "pm2-runtime start index.js --name modes -i 5",
+    "docker-start": "npx prisma generate --no-engine && pm2-runtime start index.js --name modes -i 5",
     "start": "pm2 start index.js --name modes -i 5",
     "stop": "pm2 delete modes",
     "test": ""
   },
   "dependencies": {
+    "@aws-sdk/cloudfront-signer": "^3.723.0",
+    "@prisma/client": "^6.2.1",
+    "@prisma/extension-accelerate": "^1.2.1",
+    "@prisma/extension-pulse": "^1.2.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
     "pg": "^8.11.3",
+    "prisma": "^6.2.1",
     "winston": "^3.13.0"
   },
   "devDependencies": {

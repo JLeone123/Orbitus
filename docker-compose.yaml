@@ -1,0 +1,41 @@
+services:
+  client:
+    build: client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/usr/app
+      - /usr/app/build
+      - /usr/app/node_modules
+
+  query:
+    build: query
+    ports:
+      - "4002:4002"
+    environment:
+      - SONG_DATABASE_URL=$SONG_DATABASE_URL
+      - SONG_PULSE_API_KEY=$SONG_PULSE_API_KEY
+      - BUCKET_NAME=$BUCKET_NAME
+      - BUCKET_REGION=$BUCKET_REGION
+      - CLOUDFRONT_KEY_PAIR_ID=$CLOUDFRONT_KEY_PAIR_ID
+      - CLOUDFRONT_PRIVATE_KEY=$CLOUDFRONT_PRIVATE_KEY
+    volumes:
+      - ./query:/usr/app
+      - /usr/app/node_modules
+
+  modes:
+    build: modes
+    ports:
+      - "4003:4003"
+    environment:
+      - MODE_DATABASE_URL=$MODE_DATABASE_URL
+      - MODE_PULSE_API_KEY=$MODE_PULSE_API_KEY
+    volumes:
+      - ./modes:/usr/app
+      - /usr/app/node_modules
+
+  event-bus:
+    build: event-bus
+    volumes:
+      - ./event-bus:/usr/app
+      - /usr/app/node_modules

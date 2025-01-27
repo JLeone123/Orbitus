@@ -1,10 +1,11 @@
-FROM node:apline
+FROM node:alpine
 
 RUN npm install -g pm2
 
 WORKDIR /usr/app
 
 COPY ./package.json ./
+RUN rm -rf node_modules
 RUN npm install
 
 # Make sure you delete node_modules on
