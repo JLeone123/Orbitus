@@ -1,15 +1,78 @@
 <script>
 	import { SongStore } from './store.js';
+	import { Mp3Store } from './mp3Store.js';
+	import { SongCoverStore } from './songCoverStore.js';
+
+	let mp3Audio = new File([], '');
+	let songCover = new File([], '');
+
+	Mp3Store.subscribe((_mp3) => {
+		mp3Audio = _mp3;
+	});
+
+	SongCoverStore.subscribe((_songCover) => {
+		songCover = _songCover;
+	});
+
+	const selectMp3Audio = (e) => {
+		let mp3 = e.target.files[0];
+		console.log(mp3);
+		Mp3Store.set(mp3);
+	};
+
+	const selectSongCover = (e) => {
+		let selectedSongCoverArt = e.target.files[0];
+		SongCoverStore.set(selectedSongCoverArt);
+	};
 
 	const handleUpdateForm = async () => {
+		let genre = document.getElementById('u-genre-input').value;
+		if (genre !== 'Choose genre...') {
+			genre = genre.slice(2);
+		} else {
+			console.log('The genre provided is not a supported type');
+			return;
+		}
+
+		const formData = new FormData();
+		formData.append('genre', genre);
+		formData.append('songName', document.getElementById('u-song-name-input').value);
+		formData.append('artistName', document.getElementById('u-artist-name-input').value);
+		formData.append('positivity', document.getElementById('u-song-positivity-score').value);
+		formData.append('energy', document.getElementById('u-song-energy-score').value);
+		formData.append('rhythm', document.getElementById('u-song-rhythm-score').value);
+		formData.append('liveliness', document.getElementById('u-song-liveliness-score').value);
+		formData.append('mp3Audio', mp3Audio);
+		formData.append('songCover', songCover);
+		formData.append('eventType', 'SongCreated');
+
+		let res = await fetch('http://localhost:4002/api/song', {
+			method: 'PUT',
+			mode: 'cors',
+			body: formData
+		});
+
+		let resJson = await res.json();
+
+		document.getElementById('u-genre-input').value = '';
+		document.getElementById('u-song-name-input').value = '';
+		document.getElementById('u-artist-name-input').value = '';
+		document.getElementById('u-mp3-audio-input').value = '';
+		document.getElementById('u-song-cover-input').value = '';
+		document.getElementById('u-song-positivity-score').value = '';
+		document.getElementById('u-song-energy-score').value = '';
+		document.getElementById('u-song-rhythm-score').value = '';
+		document.getElementById('u-song-liveliness-score').value = '';
+		return;
+
 		// Get genre, song name, artist name, MP3 File, image artwork file,
 		// and the song's positivity, energy, rhythm, and liveliness scores
 
 		// For the genre input, trim the first two characters off of the input
-		// I named the genre inputs in the form of a-"genre" to avoid matching
+		// I named the genre inputs in the form of u-"genre" to avoid matching
 		// values and types of other input tags - just a precaution but probably
 		// one that I do not need to take.
-		let genre = document.getElementById('u-genre-input').value.slice(2);
+		// let genre = document.getElementById('u-genre-input').value.slice(2);
 		let songName = document.getElementById('u-song-name-input').value;
 		let artistName = document.getElementById('u-artist-name-input').value;
 		let mp3File = document.getElementById('u-mp3-file-input').value;
@@ -320,7 +383,7 @@
 					</div>
 				</div>
 
-				<div class="row g-2">
+				<!-- <div class="row g-2">
 					<div class="col-md">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="u-mp3-file-icon">
@@ -359,7 +422,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<hr />
 
@@ -442,6 +505,35 @@
 								/>
 								<label for="u-song-liveliness-score">Liveliness</label>
 							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr />
+
+				<div class="row g-2">
+					<div class="col-md">
+						<div class="mb-3">
+							<label for="formFile" class="form-label">Upload MP3 audio</label>
+							<input
+								on:change={selectMp3Audio}
+								class="form-control"
+								type="file"
+								accept="audio/*"
+								id="u-mp3-audio-input"
+							/>
+						</div>
+					</div>
+					<div class="col-md">
+						<div class="mb-3">
+							<label for="formFile" class="form-label">Upload Song Cover</label>
+							<input
+								on:change={selectSongCover}
+								class="form-control"
+								type="file"
+								accept="image/*"
+								id="u-song-cover-input"
+							/>
 						</div>
 					</div>
 				</div>

@@ -24,6 +24,7 @@ const cpUpload = upload.fields([
 // import helper modules
 import { checkEvent } from "./modules/checkEvent.js";
 import { logger } from "./modules/logger.js";
+import { createFormData } from "./modules/createFormData.js";
 
 const app = express();
 const port = process.env.PORT || 4005;
@@ -34,7 +35,8 @@ app.use(helmet());
 app.use(express.json());
 app.use(cors());
 
-const servicePorts = [4002, 4003];
+// change back to 4002 and 4003
+const servicePorts = [4002];
 
 /** Ports
  * 4002 is the query service
@@ -42,12 +44,78 @@ const servicePorts = [4002, 4003];
 
 const modePort = 4003;
 
+// const formData = new FormData();
+
 app.post("/events", cpUpload, async (req, res) => {
-  console.log(req.body);
-  console.log(req.files);
+  // console.log(req.body);
+  // console.log(req.files);
   logger.http(
     JSON.stringify({ message: "request", method: "POST", endpoint: "events" })
   );
+
+  let eventType = req.body["eventType"];
+
+  if (eventType === "SongCreated") {
+    for (const port of servicePorts) {
+      try {
+        console.log(
+          `(${process.pid}) Event Bus (Sending Event to ${port}) ${eventType}`
+        );
+
+        // create a new FormData object
+        let mp3Audio = req.files["mp3Audio"][0].buffer;
+        let songCover = req.files["songCover"][0].buffer;
+
+        let songParams = {
+          genre: req.body.genre,
+          songName: req.body.songName,
+          artistName: req.body.artistName,
+          positivity: req.body.positivity,
+          energy: req.body.energy,
+          rhythm: req.body.rhythm,
+          liveliness: req.body.liveliness,
+          mp3Audio: mp3Audio,
+        };
+
+        // let formData = createFormData(fd, songCoverFile, mp3AudioFile);
+        let sentEvent = await fetch("http://localhost:4002/api/song", {
+          method: "POST",
+          mode: "cors",
+          body: JSON.stringify(songParams),
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   Accept: "application/json",
+          // },
+        });
+
+        let sentEventJson = await sentEvent.json();
+        res.send({ sentEventJson });
+        return;
+
+        // send SongCreated event to both the modes and query microservice
+        // let sentEvent = await fetch(`http://localhost:${port}/events`, {
+        //   method: "POST",
+        //   mode: "cors",
+        //   body: formData,
+        // });
+      } catch (error) {
+        console.log("here for some reason");
+        res.send({ msg: error });
+        return;
+      }
+
+      // let fd = req.body;
+      // console.log(fd);
+      // let files = req.files;
+
+      // create a new FormData object
+      // let formData = createFormData(fd, files);
+      // console.log("def");
+      // console.log(formData);
+    }
+  }
+
+  // console.log(eventType);
 
   res.send({ msg: "Hello" });
   return;

@@ -17,6 +17,7 @@
 
 	const selectMp3Audio = (e) => {
 		let mp3 = e.target.files[0];
+		console.log(mp3);
 		Mp3Store.set(mp3);
 	};
 
@@ -61,14 +62,20 @@
 		let rhythm = Number(document.getElementById('a-song-rhythm-score').value);
 		let liveliness = Number(document.getElementById('a-song-liveliness-score').value);
 
-		let res = await fetch('http://localhost:4005/events', {
+		let res = await fetch('http://localhost:4002/api/song', {
 			method: 'POST',
 			mode: 'cors',
 			body: formData
 		});
 
+		// let res = await fetch('http://localhost:4005/events', {
+		// 	method: 'POST',
+		// 	mode: 'cors',
+		// 	body: formData
+		// });
+
 		let data = res.json();
-		console.log(data);
+		// console.log(data);
 
 		document.getElementById('a-genre-input').value = '';
 		document.getElementById('a-song-name-input').value = '';

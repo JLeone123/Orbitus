@@ -9,6 +9,30 @@
 			return;
 		}
 
+		let eventType = 'SongDeleted';
+
+		let body = {
+			songName: songNameInput,
+			artistName: artistNameInput,
+			eventType
+		};
+
+		// Sending the event to the query mode
+		let sentEvent = await fetch('http://localhost:4002/api/song', {
+			method: 'DELETE',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(body)
+		});
+
+		console.log('Success');
+		return;
+
+		// Sending the event to the event-bus
+
 		// Define event object to send to the event-bus
 		let event = {
 			event: {

@@ -19,33 +19,34 @@ if (!apiKey || apiKey === "") {
   process.exit(1);
 }
 
-const prisma = new PrismaClient()
-  .$extends(withPulse({ apiKey: apiKey }))
-  .$extends(withAccelerate());
+// const prisma = new PrismaClient()
+//   .$extends(withPulse({ apiKey: apiKey }))
+//   .$extends(withAccelerate());
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
 async function main() {
   /*** create songs in prisma ******/
-  for (let song of songData) {
-    console.log(song);
-    let newSong = await prisma.song.create({
-      data: {
-        genre: song["genre"],
-        artist_id: song["artist_id"],
-        title: song["title"],
-        song_id: song["song_id"],
-        artist_name: song["artist_name"],
-        audio: song["audio"],
-        image_art: song["image_art"],
-        positivity: song["positivity"],
-        energy: song["energy"],
-        rhythm: song["rhythm"],
-        liveliness: song["liveliness"],
-      },
-    });
-  }
-
+  // for (let song of songData) {
+  //   // console.log(song);
+  //   let newSong = await prisma.song.create({
+  //     data: {
+  //       genre: song["genre"],
+  //       artist_id: song["artist_id"],
+  //       title: song["title"],
+  //       song_id: song["song_id"],
+  //       artist_name: song["artist_name"],
+  //       audio: song["audio"],
+  //       image_art: song["image_art"],
+  //       positivity: song["positivity"],
+  //       energy: song["energy"],
+  //       rhythm: song["rhythm"],
+  //       liveliness: song["liveliness"],
+  //     },
+  //   });
+  // }
+  // const songs = await prisma.song.findMany();
+  // console.log(songs);
   // const deletedSongs = await prisma.song.deleteMany({});
   // const song = await prisma.song.create({
   //   data: {
@@ -62,19 +63,16 @@ async function main() {
   //     liveliness: 6,
   //   },
   // });
-
-  // const deleteSong = await prisma.song.delete({
+  // await prisma.song.delete({
   //   where: {
-  //     id: 1,
+  //     id: 26,
   //   },
   // });
-
   //   console.log(song);
   // GET all songs from prisma and aws cloudfront.
-  // const songs = await prisma.song.findMany();
-
+  const songs = await prisma.song.findMany({});
   // console.log(deletedSongs);
-  // console.log(songs);
+  console.log(songs);
 }
 
 main()
