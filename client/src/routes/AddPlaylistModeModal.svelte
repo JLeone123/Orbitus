@@ -1,5 +1,13 @@
 <script>
 	import { ModeStore } from './modeStore.js';
+	export let modeList = [];
+	console.log(modeList);
+	ModeStore.subscribe((_modes) => {
+		modeList = _modes;
+		modeList = modeList;
+		return modeList;
+	});
+	ModeStore.set(modeList);
 
 	const addPlaylistMode = async () => {
 		let newModeName = document.getElementById('m-new-mode-name').value;
@@ -98,23 +106,20 @@
 		}
 
 		let event = {
-			event: {
-				type: 'ModeCreated',
-				data: {
-					newModeName,
-					positivityScore,
-					energyScore,
-					rhythmScore,
-					livelinessScore,
-					positivitySign,
-					energySign,
-					rhythmSign,
-					livelinessSign
-				}
+			data: {
+				newModeName,
+				positivityScore,
+				energyScore,
+				rhythmScore,
+				livelinessScore,
+				positivitySign,
+				energySign,
+				rhythmSign,
+				livelinessSign,
+				eventType: 'ModeCreated'
 			}
 		};
 
-		console.log(event);
 		let res = await fetch('http://localhost:4005/events', {
 			mode: 'cors',
 			method: 'POST',
@@ -126,6 +131,7 @@
 		});
 
 		let resJson = await res.json();
+		// send event. ******/
 
 		if (resJson === undefined) {
 			console.log('500: ISE - The modes service or the event-bus could not process the request');
@@ -135,7 +141,7 @@
 		console.log('resJson');
 		console.log(resJson);
 
-		let newMode = resJson['newMode'][0];
+		let newMode = resJson;
 		let newModeObject = {
 			id: newMode['id'],
 			name: newMode['name'],
@@ -157,6 +163,13 @@
 			modesArray = modesArray;
 			return modesArray;
 		});
+
+		// ModeStore.update((_modes) => {
+		// 	let modesArray = _modes;
+		// 	modesArray.push(newModeObject);
+		// 	modesArray = modesArray;
+		// 	return modesArray;
+		// });
 	};
 </script>
 

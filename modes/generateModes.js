@@ -39,6 +39,8 @@ async function main() {
     });
   }
 
+  // let mode = await prisma.mode.delete({ where: { id: 4 } });
+
   // GET all songs from prisma and aws cloudfront.
   const modes = await prisma.mode.findMany();
 

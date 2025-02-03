@@ -84,7 +84,7 @@
 	};
 </script>
 
-<div class="row">
+<div class="row song-component">
 	<div class="col-4">
 		<!-- <div class="col mt-5 border-0 song-component"> -->
 		<button class="song-component-button border border-0 rounded" on:click={toggleAudio}>
@@ -92,11 +92,12 @@
 		</button>
 		<!-- </div> -->
 	</div>
-	<div class="col-8">
+	<div class="col-8 song-component-characteristics">
 		<div class="row">
-			<p>"{song['title']}" by {song['artist_name']} ({song['genre']})</p>
-			<p class="characteristics-text">Characteristics</p>
-			<div class="col-6"></div>
+			<div class="col">
+				<p>"{song['title']}" by {song['artist_name']} ({song['genre']})</p>
+				<p class="characteristics-text">Characteristics</p>
+			</div>
 		</div>
 		<ul>
 			<li>Positivity: {song['positivity']}</li>
@@ -108,11 +109,17 @@
 </div>
 
 <style>
+	.song-component {
+		/* background-color: antiquewhite; */
+		display: flex;
+		width: 100%;
+	}
 	.song-component-button {
 		box-sizing: border-box;
 		/* background: #111827; */
 		background: #212529;
 		margin-bottom: 1rem;
+		/* margin-right: 1rem; */
 	}
 	.song-component-image {
 		box-sizing: border-box;
@@ -121,6 +128,10 @@
 		transition: 0.25s;
 		outline: none;
 	}
+
+	/* .song-component-characteristics {
+		margin-left: 3rem;
+	} */
 
 	.song-component-image:hover {
 		box-shadow: 0 0 2rem rgb(15, 15, 15);

@@ -6,6 +6,7 @@ import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { withPulse } from "@prisma/extension-pulse";
+import { request } from "http";
 
 const app = express();
 dotenv.config();
@@ -28,10 +29,49 @@ const prisma = new PrismaClient()
 app.get("/api/modes", async (req, res) => {
   console.log("GET /api/modes");
   const modes = await prisma.mode.findMany({});
-
-  // Can use the posts to generate signedUrls for each image
-  console.log(modes);
   res.send(modes);
+});
+
+app.get("/api/mode/:modeName", async (req, res) => {});
+
+app.post("/api/mode", async (req, res) => {
+  console.log("POST /api/mode");
+  const {
+    newModeName,
+    positivityScore,
+    energyScore,
+    rhythmScore,
+    livelinessScore,
+    positivitySign,
+    energySign,
+    rhythmSign,
+    livelinessSign,
+  } = req.body;
+
+  const mode = await prisma.mode.create({
+    data: {
+      name: newModeName,
+      positivity: positivityScore,
+      energy: energyScore,
+      rhythm: rhythmScore,
+      liveliness: livelinessScore,
+      positivitySign,
+      energySign,
+      rhythmSign,
+      livelinessSign,
+    },
+  });
+
+  res.send(mode);
+});
+
+app.delete("/api/mode", async (req, res) => {
+  console.log("DELETE /api/mode");
+  const { id } = req.body;
+
+  const mode = await prisma.mode.delete({ where: { id } });
+
+  res.send(mode);
 });
 
 app.listen(4003, () => {

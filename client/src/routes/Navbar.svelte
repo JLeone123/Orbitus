@@ -37,10 +37,96 @@
 		} else {
 			ModeStore.set(resJson['modes']);
 		}
-		
-		// fix reactivity here.
-		modeList = resJson;
+
+		// fix reactivity here
+		ModeStore.set(resJson);
 	});
+
+	const updateSongList = async (e) => {
+		let modeName = e.target.text;
+		let mode = modeList.find((mode) => mode['name'] === modeName);
+
+		let positivity = Number(mode['positivity']);
+		let energy = Number(mode['energy']);
+		let rhythm = Number(mode['rhythm']);
+		let liveliness = Number(mode['liveliness']);
+		let positivitySign = mode['positivitySign'];
+		let energySign = mode['energySign'];
+		let rhythmSign = mode['rhythmSign'];
+		let livelinessSign = mode['livelinessSign'];
+		let eventType = 'ModeGenerated';
+
+		let body = {
+			data: {
+				modeName,
+				positivity,
+				energy,
+				rhythm,
+				liveliness,
+				positivitySign,
+				energySign,
+				rhythmSign,
+				livelinessSign,
+				eventType
+			}
+		};
+
+		let res = await fetch('http://localhost:4005/events/mode', {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(body)
+		});
+
+		let data = await res.json();
+		SongStore.set(data['foundSongs']);
+
+		// let res = await fetch(`http://localhost:4005/events`, {
+		// 	method: 'POST',
+		// 	mode: 'cors',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 		Accept: 'application/json'
+		// 	}
+		// 	body: JSON.stringify({
+		// 		data: {
+		// 			modeName: modeName,
+		// 			eventType: 'ModeGenerated',
+
+		// 		}
+		// 	})
+		// });
+
+		// let data = await res.json();
+	};
+
+	const deleteMode = async (e, id) => {
+		// do I need this line?
+		e.preventDefault();
+		let res = await fetch(`http://localhost:4005/events`, {
+			method: 'DELETE',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				event: {
+					id: id,
+					type: 'ModeDeleted'
+				}
+			})
+		});
+
+		let resJson = await res.json();
+		ModeStore.update((_modeList) => {
+			let newModeList = _modeList.filter((mode) => mode['id'] !== id);
+			return newModeList;
+		});
+	};
 
 	// const getPlaylistMode = async (event) => {
 	// 	let modeName = event.target.text;
@@ -109,6 +195,7 @@
 	// 		return resTwoJson['foundSongs'];
 	// 	});
 	// };
+	$: modeList = modeList;
 </script>
 
 <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
@@ -164,13 +251,20 @@
 					>
 						Playlist Modes
 					</a>
+					<!-- modeList -->
 					<ul class="dropdown-menu">
 						{#each modeList as mode (mode['id'])}
-							<li>
+							<li class="modelist--mode">
 								<!-- on:click={getPlaylistMode} -->
-								<a class="dropdown-item" id="mode-{generateModeId(mode['name'])}" href="#/"
-									>{mode['name']}</a
+								<a
+									class="dropdown-item"
+									id="mode-{generateModeId(mode['name'])}"
+									href="#/"
+									on:click={updateSongList}>{mode['name']}</a
 								>
+								<button class="modelist-mode__button" on:click={(e) => deleteMode(e, mode['id'])}>
+									<i class="bi bi-trash modelist-mode__icon"></i>
+								</button>
 							</li>
 						{/each}
 
@@ -195,17 +289,33 @@
 <AddSongComponent />
 <UpdateSongComponent />
 <DeleteSongComponent />
-<AddPlaylistModeModal />
+<AddPlaylistModeModal {modeList} />
 
 <style>
 	a:hover,
 	a.dropdown-menu-button:hover,
-	a.dropdown-item:hover {
+	a.dropdown-item:hover,
+	.modelist-mode__icon:hover {
 		color: rgb(230, 230, 230);
 	}
 
 	a.dropdown-item {
-		/* color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)); */
+		color: rgba(255, 255, 255, 0.65);
+	}
+
+	.modelist--mode {
+		display: flex;
+		color: rgba(255, 255, 255, 0.65);
+		align-items: center;
+		padding: 0.1rem 1rem 0.25rem 0.25rem;
+		cursor: pointer;
+	}
+
+	.modelist-mode__button {
+		background-color: transparent;
+		padding: 0;
+		margin: 0;
+		border: none;
 		color: rgba(255, 255, 255, 0.65);
 	}
 

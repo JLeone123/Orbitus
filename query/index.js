@@ -5,6 +5,8 @@ import crypto from "crypto";
 import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
+import { generateSignText } from "./modules/generateSignText.js";
+import { generateCondition } from "./modules/generateCondition.js";
 import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
 import {
   S3Client,
@@ -228,6 +230,46 @@ app.post("/api/song", cpUpload, async (req, res) => {
   });
 
   res.send(newSong);
+});
+
+app.post("/api/song/mode", async (req, res) => {
+  let positivity = req.body.positivity;
+  let energy = req.body.energy;
+  let rhythm = req.body.rhythm;
+  let liveliness = req.body.liveliness;
+  let positivitySign = req.body.positivitySign;
+  let energySign = req.body.energySign;
+  let rhythmSign = req.body.rhythmSign;
+  let livelinessSign = req.body.livelinessSign;
+
+  let songs = await prisma.song.findMany({
+    where: {
+      positivity: generateCondition(positivitySign, Number(positivity)),
+      energy: generateCondition(energySign, Number(energy)),
+      rhythm: generateCondition(rhythmSign, Number(rhythm)),
+      liveliness: generateCondition(livelinessSign, Number(liveliness)),
+    },
+  });
+
+  for (const song of songs) {
+    song.audioUrl = getSignedUrl({
+      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.audio,
+      // the signed url will expire after one day
+      // it is generated.
+      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
+      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
+      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
+    });
+
+    song.imageUrl = getSignedUrl({
+      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.image_art,
+      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
+      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
+      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
+    });
+  }
+
+  res.send({ foundSongs: songs });
 });
 
 app.put("/api/song", cpUpload, async (req, res) => {

@@ -150,7 +150,7 @@
 					<SongComponent {song} />
 				</li>
 
-				{#if index < songList.length - 1}
+				{#if index <= songList.length - 1}
 					<hr class="song-list-component-divider" />
 				{/if}
 			{/each}
@@ -160,6 +160,7 @@
 
 <style>
 	.song-list-component__list {
+		/* background-color: aqua; */
 		list-style: none;
 	}
 </style>
