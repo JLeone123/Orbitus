@@ -6,8 +6,8 @@ import cors from "cors";
 
 import "dotenv/config";
 import Store from "./store.js";
-import { checkEvent } from "./modules/checkEvent.js";
-import { logger } from "./modules/logger.js";
+import { checkEvent } from "./checkEvent.js";
+import { logger } from "./logger.js";
 
 const app = express();
 

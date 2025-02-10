@@ -1,5 +1,5 @@
 <script>
-	import { SongStore } from './store.js';
+	import { SongStore } from '../stores-folder/store.js';
 
 	const handleDeleteForm = async () => {
 		let songNameInput = document.getElementById('d-song-name-input').value;

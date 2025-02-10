@@ -1,28 +1,45 @@
+/**** Express app, middleware, and library imports ****/
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
-import crypto from "crypto";
 import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
-import { generateSignText } from "./modules/generateSignText.js";
+
+/**** Helper module imports ****/
 import { generateCondition } from "./modules/generateCondition.js";
-import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
+import { checkEvent } from "./modules/checkEvent.js";
+import { randomImageName } from "./modules/randomImageName.js";
+import { generateUniqueCallerReference } from "./modules/generateUniqueCallerReference.js";
+import { generateSignedUrls } from "./modules/generateSignedUrls.js";
+
+/**** Winston logger import ****/
+import { logger } from "./modules/logger.js";
+
+/**** Amazon S3 Client imports ****/
 import {
   S3Client,
   PutObjectCommand,
   DeleteObjectCommand,
-  GetObjectCommand,
 } from "@aws-sdk/client-s3";
+
+/**** Prisma imports ****/
 import { PrismaClient } from "@prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { withPulse } from "@prisma/extension-pulse";
-import { checkEvent } from "./modules/checkEvent.js";
-import { logger } from "./modules/logger.js";
+
+/**** Amazon CloudFront imports ****/
 import {
   CloudFrontClient,
   CreateInvalidationCommand,
 } from "@aws-sdk/client-cloudfront";
+import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
+import { validateScores } from "./modules/validateScores.js";
+import { generatePrismaData } from "./modules/generatePrismaData.js";
+import { validateCharacteristics } from "./modules/validateCharacteristics.js";
+import { generatePrismaCreateData } from "./modules/generatePrismaCreateData.js";
+import { validateMode } from "./modules/validateMode.js";
+import { deleteSongsInCloud } from "./modules/deleteSongsInCloud.js";
 
 // Install middleware, use Morgan for logging requests.
 const app = express();
@@ -33,15 +50,24 @@ app.use(helmet());
 app.use(express.json());
 app.use(cors());
 
-// multer memory storage setup
+// Setup storage for multer
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+
+// Declare and initialize Amazon S3,
+// Amazon CloudFront, and Prisma
+// environment variables
+const apiKey = process.env.SONG_PULSE_API_KEY ?? "";
 const accessKey = process.env.ACCESS_KEY;
 const secretAccessKey = process.env.SECRET_ACCESS_KEY;
 const bucketName = process.env.BUCKET_NAME;
 const bucketRegion = process.env.BUCKET_REGION;
+const cloudFrontPrivateKey = process.env.CLOUDFRONT_PRIVATE_KEY;
+const cloudFrontUrl = process.env.CLOUD_FRONT_URL;
 const cloudFrontDistId = process.env.CLOUD_FRONT_DIST_ID;
+const cloudFrontKeyPairId = process.env.CLOUDFRONT_KEY_PAIR_ID;
 
+// Create a new Amazon S3 Client object
 const s3 = new S3Client({
   credentials: {
     accessKeyId: accessKey,
@@ -50,6 +76,7 @@ const s3 = new S3Client({
   region: bucketRegion,
 });
 
+// Create an Amazon CloudFront object
 const cloudFront = new CloudFrontClient({
   credentials: {
     accessKeyId: accessKey,
@@ -58,6 +85,7 @@ const cloudFront = new CloudFrontClient({
   region: process.env.BUCKET_REGION,
 });
 
+// Upload middleware for Multer
 const cpUpload = upload.fields([
   { name: "genre", maxCount: 1 },
   { name: "songName", maxCount: 1 },
@@ -70,17 +98,11 @@ const cpUpload = upload.fields([
   { name: "songCover", maxCount: 1 },
 ]);
 
-const randomImageName = (bytes = 32) =>
-  crypto.randomBytes(bytes).toString("hex");
-
-const generateUniqueCallerReference = (bytes = 32) => {
-  return crypto.randomBytes(bytes).toString("hex");
-};
-
+// Define default genres.
 let genres = ["indie", "folk", "country", "classical"];
 
-const apiKey = process.env.SONG_PULSE_API_KEY ?? "";
-
+// Check if the Prisma Songs
+// Database API Key is defined.
 if (!apiKey || apiKey === "") {
   console.log(
     `Please set the \`PULSE_API_KEY\` environment variable in the \`.env\` file.`
@@ -88,118 +110,93 @@ if (!apiKey || apiKey === "") {
   process.exit(1);
 }
 
+// Create a new Prisma Client
+// in production mode
 // const prisma = new PrismaClient()
 //   .$extends(withPulse({ apiKey: apiKey }))
 //   .$extends(withAccelerate());
 
+// Create a new Prisma Client
 const prisma = new PrismaClient();
 
 app.get("/api/songs", async (req, res) => {
-  console.log("GET /api/songs");
+  // Retrieve all songs from the Prisma songs db
   const songs = await prisma.song.findMany({});
-  // Can use the posts to generate signedUrls for each image
-  for (const song of songs) {
-    song.audioUrl = getSignedUrl({
-      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.audio,
-      // the signed url will expire after one day
-      // it is generated.
-      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-    });
 
-    song.imageUrl = getSignedUrl({
-      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.image_art,
-      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-    });
-  }
+  // Utilize the songs from Prisma to generate signedUrls for each image
+  let newSongs = songs.map((s) =>
+    generateSignedUrls(
+      s,
+      cloudFrontUrl,
+      1,
+      cloudFrontPrivateKey,
+      cloudFrontKeyPairId
+    )
+  );
 
-  res.send(songs);
+  res.send(newSongs);
 });
 
 app.get(
   "/api/songs/generate/:genre/:positivity/:energy/:rhythm/:liveliness",
   async (req, res) => {
-    console.log("GET /api/songs/generate");
-    const { genre, positivity, energy, rhythm, liveliness } = req.params;
+    // Validating fields
+    const characteristics = req.params;
+    const newCharacteristics = validateScores(characteristics);
 
-    if (
-      genre === undefined ||
-      typeof genre !== "string" ||
-      genre.length === 0
-    ) {
-      res.send({ msg: "genre is not valid" });
+    if (newCharacteristics === null) {
+      // can make this error message more specific later.
+      res.send({ msg: "Error validating data" });
       return;
     }
 
-    let conditions = {
-      positivity: {
-        gte: Number(positivity),
-      },
-      energy: {
-        gte: Number(energy),
-      },
-      rhythm: {
-        gte: Number(rhythm),
-      },
-      liveliness: {
-        gte: Number(liveliness),
-      },
-    };
-
-    if (genres.includes(genre)) {
-      conditions["genre"] = genre;
-    }
+    const data = generatePrismaData(newCharacteristics);
 
     let songs = await prisma.song.findMany({
-      where: conditions,
+      where: data,
     });
 
-    for (const song of songs) {
-      song.audioUrl = getSignedUrl({
-        url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.audio,
-        // the signed url will expire after one day
-        // it is generated.
-        dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-        keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-      });
+    // use helper function
+    let newSongs = songs.map((s) =>
+      generateSignedUrls(
+        s,
+        cloudFrontUrl,
+        1,
+        cloudFrontPrivateKey,
+        cloudFrontKeyPairId
+      )
+    );
 
-      song.imageUrl = getSignedUrl({
-        url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.image_art,
-        dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-        keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-      });
-    }
-
-    res.send({ foundSongs: songs });
+    res.send({ foundSongs: newSongs });
   }
 );
 
 app.post("/api/song", cpUpload, async (req, res) => {
-  let { genre, songName, artistName, positivity, energy, rhythm, liveliness } =
-    req.body;
-  let mp3Audio = req.files.mp3Audio[0];
-  let songCover = req.files.songCover[0];
+  let mp3Audio = req.files.mp3Audio;
+  let songCover = req.files.songCover;
 
-  const imageName = randomImageName();
-  const audioName = randomImageName();
+  let newCharacteristics = validateCharacteristics(
+    req.body,
+    mp3Audio,
+    songCover
+  );
+
+  let { newData, newMp3Audio, newSongCover } = newCharacteristics;
+
+  let data = generatePrismaCreateData(newData);
 
   const imageParams = {
     Bucket: bucketName,
-    Key: `images/${songCover.originalname}`,
-    Body: songCover.buffer,
-    ContentType: req.files.songCover[0].mimetype,
+    Key: `${data["image_art"]}`,
+    Body: newSongCover.buffer,
+    ContentType: newSongCover.mimetype,
   };
 
   const songParams = {
     Bucket: bucketName,
-    Key: `audio/${mp3Audio.originalname}`,
-    Body: mp3Audio.buffer,
-    ContentType: req.files.mp3Audio[0].mimetype,
+    Key: `${data["audio"]}`,
+    Body: newMp3Audio.buffer,
+    ContentType: newMp3Audio.mimetype,
   };
 
   const createImageCommand = new PutObjectCommand(imageParams);
@@ -213,35 +210,29 @@ app.post("/api/song", cpUpload, async (req, res) => {
   // b) what if the artist already has an id?
   //    1. Can use a prisma query - if length is zero,
   //       then create a new artist id.
-  const newSong = await prisma.song.create({
-    data: {
-      genre,
-      artist_id: `${songCover.originalname}`, // can change once this is functioning.
-      title: songName,
-      song_id: `${mp3Audio.originalname}`,
-      artist_name: artistName,
-      audio: `audio/${mp3Audio.originalname}`,
-      image_art: `images/${songCover.originalname}`,
-      positivity: Number(positivity),
-      energy: Number(energy),
-      rhythm: Number(rhythm),
-      liveliness: Number(liveliness),
-    },
-  });
+
+  const newSong = await prisma.song.create({ data });
 
   res.send(newSong);
 });
 
 app.post("/api/song/mode", async (req, res) => {
-  let positivity = req.body.positivity;
-  let energy = req.body.energy;
-  let rhythm = req.body.rhythm;
-  let liveliness = req.body.liveliness;
-  let positivitySign = req.body.positivitySign;
-  let energySign = req.body.energySign;
-  let rhythmSign = req.body.rhythmSign;
-  let livelinessSign = req.body.livelinessSign;
+  // Check mode characteristics data.
+  let { ...modeCharacteristics } = req.body;
+  let modeCharacteristicsCheck = validateMode(modeCharacteristics);
 
+  if (modeCharacteristicsCheck === false) {
+    res.send({
+      msg: "The provided characteristics are invalid.  Valid scores are between 1 and 100 inclusive and valid signs include >, <, >=, and <=",
+    });
+    return;
+  }
+
+  let { positivitySign, energySign, rhythmSign, livelinessSign } =
+    modeCharacteristics;
+  let { positivity, energy, rhythm, liveliness } = modeCharacteristics;
+
+  // return conditions here.
   let songs = await prisma.song.findMany({
     where: {
       positivity: generateCondition(positivitySign, Number(positivity)),
@@ -251,32 +242,46 @@ app.post("/api/song/mode", async (req, res) => {
     },
   });
 
-  for (const song of songs) {
-    song.audioUrl = getSignedUrl({
-      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.audio,
-      // the signed url will expire after one day
-      // it is generated.
-      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-    });
+  // Generate signed urls for each song.
+  let newSongs = songs.map((s) =>
+    generateSignedUrls(
+      s,
+      cloudFrontUrl,
+      1,
+      cloudFrontPrivateKey,
+      cloudFrontKeyPairId
+    )
+  );
 
-    song.imageUrl = getSignedUrl({
-      url: "https://d2e5xe0z1ccepx.cloudfront.net/" + song.image_art,
-      dateLessThan: new Date(Date.now() + 1000 * 60 * 60 * 24),
-      privateKey: process.env.CLOUDFRONT_PRIVATE_KEY,
-      keyPairId: process.env.CLOUDFRONT_KEY_PAIR_ID,
-    });
-  }
-
-  res.send({ foundSongs: songs });
+  // can add imageUrl and audioUrl check here.
+  res.send({ foundSongs: newSongs });
 });
 
 app.put("/api/song", cpUpload, async (req, res) => {
   let { genre, songName, artistName, positivity, energy, rhythm, liveliness } =
     req.body;
-  let mp3Audio = req.files.mp3Audio[0];
-  let songCover = req.files.songCover[0];
+
+  let songCharacteristics = {
+    genre,
+    songName,
+    artistName,
+    positivity,
+    energy,
+    rhythm,
+    liveliness,
+  };
+
+  let mp3Audio = req.files.mp3Audio;
+  let songCover = req.files.songCover;
+
+  let newCharacteristics = validateCharacteristics(
+    songCharacteristics,
+    mp3Audio,
+    songCover
+  );
+
+  let { newData, newMp3Audio, newSongCover } = newCharacteristics;
+  let data = generatePrismaCreateData(newData);
 
   // Get matching songs from db
   // can update to work with song ids
@@ -301,38 +306,23 @@ app.put("/api/song", cpUpload, async (req, res) => {
       where: {
         id: song["id"],
       },
-      data: {
-        genre,
-        artist_id: `${songCover.originalname}`, // can change once this is functioning.
-        title: songName,
-        song_id: `${mp3Audio.originalname}`,
-        artist_name: artistName,
-        audio: `audio/${mp3Audio.originalname}`,
-        image_art: `images/${songCover.originalname}`,
-        positivity: Number(positivity),
-        energy: Number(energy),
-        rhythm: Number(rhythm),
-        liveliness: Number(liveliness),
-      },
+      data,
     });
   }
-
-  let originalSongCoverName = songs[0]["image_art"];
-  let originalMp3AudioName = songs[0]["audio"];
 
   // Adding the new song data to s3 bucket
   const imageParams = {
     Bucket: bucketName,
-    Key: `images/${songCover.originalname}`,
-    Body: songCover.buffer,
-    ContentType: req.files.songCover[0].mimetype,
+    Key: `${data["image_art"]}`,
+    Body: newSongCover["buffer"],
+    ContentType: newSongCover["mimetype"],
   };
 
   const songParams = {
     Bucket: bucketName,
-    Key: `audio/${mp3Audio.originalname}`,
-    Body: mp3Audio.buffer,
-    ContentType: req.files.mp3Audio[0].mimetype,
+    Key: `${data["audio"]}`,
+    Body: newMp3Audio["buffer"],
+    ContentType: newMp3Audio["mimetype"],
   };
 
   const createImageCommand = new PutObjectCommand(imageParams);
@@ -342,23 +332,11 @@ app.put("/api/song", cpUpload, async (req, res) => {
   await s3.send(createSongCommand);
 
   // Deleting the old song data from the s3 bucket
-  let originalImageParams = {
+  let params = {
     Bucket: bucketName,
-    Key: `${originalSongCoverName}`,
   };
 
-  let originalSongParams = {
-    Bucket: bucketName,
-    Key: `${originalMp3AudioName}`,
-  };
-
-  const deleteImageCommand = new DeleteObjectCommand(originalImageParams);
-  await s3.send(deleteImageCommand);
-
-  const deleteSongCommand = new DeleteObjectCommand(originalSongParams);
-  await s3.send(deleteSongCommand);
-
-  // Invalidate the data in the CloudFront cache
+  // Delete Songs from Amazon
   const cloudFrontParams = {
     DistributionId: cloudFrontDistId,
     InvalidationBatch: {
@@ -368,14 +346,8 @@ app.put("/api/song", cpUpload, async (req, res) => {
       },
     },
   };
-  cloudFrontParams["InvalidationBatch"]["Paths"]["Items"] = [
-    "/" + `${originalMp3AudioName}`,
-    "/" + `${originalSongCoverName}`,
-  ];
 
-  const cloudFrontSongCommand = new CreateInvalidationCommand(cloudFrontParams);
-  await cloudFront.send(cloudFrontSongCommand);
-
+  await deleteSongsInCloud(songs, s3, cloudFront, params, cloudFrontParams);
   // Send success message
   res.send({
     msg: "The song was successfully updated in the database and in the cloud!",
@@ -386,6 +358,10 @@ app.delete("/api/song", async (req, res) => {
   // Can later finetune this more for other cases, but
   // for now, all songs that match the songName and artistName
   // can be deleted.
+  // Thinking that I can just make a modal with songs, choose the song,
+  // which can consist of the song's ID, cover art, name, and artist.
+  // The user can choose which song to delete, which will send a fetch request
+  // to this endpoint. will be able to delete this query here.
   const { songName, artistName } = req.body;
   const songs = await prisma.song.findMany({
     where: {
@@ -404,33 +380,13 @@ app.delete("/api/song", async (req, res) => {
       CallerReference: generateUniqueCallerReference(),
       Paths: {
         Quantity: 2,
-        // Items: ["/" + post.imageName],
       },
     },
   };
 
-  // Deleting the s3 object from the s3 bucket
-  for (let song of songs) {
-    params["Key"] = `${song["audio"]}`;
-    const musicCommand = new DeleteObjectCommand(params);
-    await s3.send(musicCommand);
-
-    params["Key"] = `${song["image_art"]}`;
-    const imageCommand = new DeleteObjectCommand(params);
-    await s3.send(imageCommand);
-
-    // Invalidating the music data in the
-    // CloudFront cache
-    cloudFrontParams["InvalidationBatch"]["Paths"]["Items"] = [
-      "/" + `${song["audio"]}`,
-      "/" + `${song["image_art"]}`,
-    ];
-
-    const cloudFrontSongCommand = new CreateInvalidationCommand(
-      cloudFrontParams
-    );
-    await cloudFront.send(cloudFrontSongCommand);
-  }
+  // delete found songs in the S3 bucket
+  // and invalidate the CloudFront cache
+  await deleteSongsInCloud(songs, s3, cloudFront, params, cloudFrontParams);
 
   // Deleting the songs from the database
   for (let song of songs) {

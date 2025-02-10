@@ -7,8 +7,8 @@ import crypto from "crypto";
 
 import "dotenv/config";
 import Store from "./store.js";
-import { checkEvent } from "./modules/checkEvent.js";
-import { logger } from "./modules/logger.js";
+import { checkEvent } from "../modules/checkEvent.js";
+import { logger } from "../modules/logger.js";
 
 const app = express();
 

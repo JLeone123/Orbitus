@@ -3,10 +3,10 @@
 	import DeleteSongComponent from './DeleteSongComponent.svelte';
 	import UpdateSongComponent from './UpdateSongComponent.svelte';
 	import AddPlaylistModeModal from './AddPlaylistModeModal.svelte';
-	import { generateModeId } from './createModeId.js';
+	import { generateModeId } from '../modules/createModeId.js';
 
-	import { ModeStore } from './modeStore.js';
-	import { SongStore } from './store.js';
+	import { ModeStore } from '../stores-folder/index.js';
+	import { SongStore } from '../stores-folder/store.js';
 	import { onMount } from 'svelte';
 
 	let modeList = [];

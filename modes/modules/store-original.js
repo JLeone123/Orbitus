@@ -1,6 +1,6 @@
 import "dotenv/config";
 import pg from "pg";
-import { modeList } from "./modules/initialModes.js";
+import { modeList } from "./initialModes.js";
 
 // Get the Pool class from the pg module.
 const { Pool } = pg;

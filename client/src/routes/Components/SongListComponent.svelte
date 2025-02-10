@@ -92,7 +92,7 @@
 	import SongComponent from './SongComponent.svelte';
 	import SpinningLoader from './SpinningLoader.svelte';
 	import { onMount } from 'svelte';
-	import { SongStore } from './store.js';
+	import { SongStore } from '../stores-folder/store.js';
 
 	export let songList = [];
 
@@ -125,6 +125,7 @@
 			// with their image and mp3 file paths
 			// by parsing the JSON response
 			const data = await res.json();
+			console.log(data);
 
 			if (data === undefined) {
 				SongStore.set([]);
@@ -160,7 +161,6 @@
 
 <style>
 	.song-list-component__list {
-		/* background-color: aqua; */
 		list-style: none;
 	}
 </style>

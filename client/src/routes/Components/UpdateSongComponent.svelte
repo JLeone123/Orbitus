@@ -1,7 +1,7 @@
 <script>
-	import { SongStore } from './store.js';
-	import { Mp3Store } from './mp3Store.js';
-	import { SongCoverStore } from './songCoverStore.js';
+	import { SongStore } from '../stores-folder/store.js';
+	import { Mp3Store } from '../stores-folder/mp3Store.js';
+	import { SongCoverStore } from '../stores-folder/songCoverStore.js';
 
 	let mp3Audio = new File([], '');
 	let songCover = new File([], '');

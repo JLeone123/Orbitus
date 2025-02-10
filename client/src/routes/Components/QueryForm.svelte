@@ -1,5 +1,5 @@
 <script>
-	import { SongStore } from './store.js';
+	import { SongStore } from '../stores-folder/store.js';
 
 	let songPositivityScore = 50.0;
 	let songEnergyScore = 50.0;

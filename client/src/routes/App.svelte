@@ -1,7 +1,5 @@
 <script>
-	import Navbar from './Navbar.svelte';
-	import SongListComponent from './SongListComponent.svelte';
-	import QueryForm from './QueryForm.svelte';
+	import { Navbar, SongListComponent, QueryForm } from './Components/index.js';
 </script>
 
 <Navbar />

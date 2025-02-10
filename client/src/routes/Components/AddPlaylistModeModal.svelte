@@ -1,5 +1,5 @@
 <script>
-	import { ModeStore } from './modeStore.js';
+	import { ModeStore } from '../stores-folder/modeStore.js';
 	export let modeList = [];
 	console.log(modeList);
 	ModeStore.subscribe((_modes) => {

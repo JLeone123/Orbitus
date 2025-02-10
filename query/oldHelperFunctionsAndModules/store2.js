@@ -1,6 +1,6 @@
 import "dotenv/config";
 import pg from "pg";
-import { songList } from "./modules/initialSongs.js";
+import { songList } from "../modules/initialSongs.js";
 
 // Get the Pool class from the pg module.
 const { Pool } = pg;

@@ -65,7 +65,7 @@ async function main() {
   // });
   // await prisma.song.delete({
   //   where: {
-  //     id: 26,
+  //     id: 423,
   //   },
   // });
   //   console.log(song);
