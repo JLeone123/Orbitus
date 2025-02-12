@@ -24,7 +24,6 @@ const cpUpload = upload.fields([
 // import helper modules
 import { checkEvent } from "./modules/checkEvent.js";
 import { logger } from "./modules/logger.js";
-import { createFormData } from "./modules/createFormData.js";
 
 const app = express();
 const port = process.env.PORT || 4005;
@@ -71,20 +70,25 @@ app.post("/events/mode", async (req, res) => {
   };
 
   let newModeName = modeName.replace(/\s+/g, "-").toLowerCase();
+  console.log(newModeName);
   let songs = [];
   if (eventType === "ModeGenerated") {
     try {
-      let res = await fetch("http://localhost:4002/api/song/mode", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(modeData),
-      });
+      let generatedModeEvent = await fetch(
+        "http://localhost:4002/api/song/mode",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(modeData),
+        }
+      );
 
-      songs = await res.json();
+      songs = await generatedModeEvent.json();
+      console.log(songs);
     } catch (error) {
       res.send({ msg: error });
       return;
@@ -160,22 +164,13 @@ app.post("/events", cpUpload, async (req, res) => {
         let sentEventJson = await sentEvent.json();
         res.send({ sentEventJson });
         return;
-
-        // send SongCreated event to both the modes and query microservice
-        // let sentEvent = await fetch(`http://localhost:${port}/events`, {
-        //   method: "POST",
-        //   mode: "cors",
-        //   body: formData,
-        // });
       } catch (error) {
-        console.log("here for some reason");
         res.send({ msg: error });
         return;
       }
     }
     // Sending ModeCreated event
   } else if (eventType === "ModeCreated") {
-    console.log("hello");
     try {
       console.log(
         `(${process.pid}) Event Bus (Sending Event to ${modePort}) ${eventType}`
@@ -224,15 +219,6 @@ app.post("/events", cpUpload, async (req, res) => {
     }
   }
 
-  // console.log(eventType);
-
-  res.send({ msg: "Hello" });
-  return;
-  // Get event object from the request body.
-  // let { event } = req.body;
-
-  console.log(event);
-
   // Since only events should be sent to the event bus,
   // we check if an event was passed to the event-bus
   if (event === undefined || typeof event !== "object") {
@@ -256,8 +242,6 @@ app.post("/events", cpUpload, async (req, res) => {
   // Check if the event object is valid and
   // contains valid data
   let isEventValid = checkEvent(event, event.type, event.data, res);
-
-  console.log(isEventValid);
 
   if (!isEventValid) {
     logger.http(
@@ -383,33 +367,6 @@ app.post("/events", cpUpload, async (req, res) => {
       statusCode: res.statusCode,
     })
   );
-});
-
-app.get("/events/:modeName", async (req, res) => {
-  // let { eventType, modeName, } = req.params;
-  // let eventType = "ModeGet";
-
-  // console.log(modeName);
-
-  return;
-
-  try {
-    let res = await fetch(`http://localhost:4002/api/mode/${modeName}`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    });
-
-    let data = await res.json();
-
-    res.send(data);
-  } catch (error) {
-    res.send({ msg: error });
-    return;
-  }
 });
 
 app.put("/events", async (req, res) => {
@@ -619,22 +576,6 @@ app.delete("/events", async (req, res) => {
     return;
   }
 
-  // Check if the event object is valid and
-  // contains valid data
-  // let isEventValid = checkEvent(event, event.type, event.data, res);
-
-  // if (!isEventValid) {
-  //   logger.http(
-  //     JSON.stringify({
-  //       message: "response",
-  //       method: "DELETE",
-  //       endpoint: "events",
-  //       statusCode: res.statusCode,
-  //     })
-  //   );
-  //   return;
-  // }
-
   let type = event.type;
 
   console.log(`${process.pid} Event Bus (Received Event) ${type}`);
@@ -778,7 +719,7 @@ app.delete("/events", async (req, res) => {
 
   if (type === "ModeDeleted") {
     let id = event.id;
-    let res = await fetch(`http://localhost:4003/api/mode`, {
+    let sentEvent = await fetch(`http://localhost:4003/api/mode`, {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -790,9 +731,10 @@ app.delete("/events", async (req, res) => {
       }),
     });
 
-    let data = await res.json();
+    let sentEventJson = await sentEvent.json();
+    res.send({ msg: "The mode was successfully deleted from the database!" });
+    return;
   }
-  res.send({ msg: "The mode was successfully deleted from the database!" });
 });
 
 app.listen(port, () => {

@@ -137,9 +137,6 @@ const generateSongId = (songName, bytes = 4) => {
   return newSongId;
 };
 
-console.log(generateSongId("Echoes In"));
-console.log(generateArtistId("A P J"));
-
 export const generatePrismaCreateData = (songCharacteristics) => {
   const {
     genre,

@@ -7,6 +7,8 @@ services:
       - ./client:/usr/app
       - /usr/app/build
       - /usr/app/node_modules
+    networks:
+      - orbitus-v222
 
   query:
     build: query
@@ -22,6 +24,8 @@ services:
     volumes:
       - ./query:/usr/app
       - /usr/app/node_modules
+    networks:
+      - orbitus-v222
 
   modes:
     build: modes
@@ -33,9 +37,19 @@ services:
     volumes:
       - ./modes:/usr/app
       - /usr/app/node_modules
+    networks:
+      - orbitus-v222
 
   event-bus:
     build: event-bus
+    ports:
+      - "4005:4005"
     volumes:
       - ./event-bus:/usr/app
       - /usr/app/node_modules
+    networks:
+      - orbitus-v222
+
+networks:
+  orbitus-v222:
+    driver: bridge

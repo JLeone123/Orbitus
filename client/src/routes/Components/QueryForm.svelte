@@ -117,9 +117,7 @@
 			console.log('There are no songs that meet the criteria for the foundSongs playlist');
 			foundSongs = [];
 		} else {
-			console.log('foundSongs...');
 			foundSongs = resJson['foundSongs'];
-			console.log(foundSongs);
 		}
 
 		// error heading
@@ -161,13 +159,6 @@
 		// add default text header
 		// make second endpoint to handle genre
 	};
-
-	// $: songPositivityScore = songPositivityScore;
-	// $: songEnergyScore = songEnergyScore;
-	// $: songRhythmScore = songRhythmScore;
-	// $: songLivelinessScore = songLivelinessScore;
-
-	$: console.log(songPositivityScore);
 </script>
 
 <div class="position-fixed">

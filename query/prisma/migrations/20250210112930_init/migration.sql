@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "Song" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id" SERIAL NOT NULL,
     "genre" TEXT NOT NULL,
     "artist_id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
@@ -11,5 +11,7 @@ CREATE TABLE "Song" (
     "positivity" INTEGER NOT NULL,
     "energy" INTEGER NOT NULL,
     "rhythm" INTEGER NOT NULL,
-    "liveliness" INTEGER NOT NULL
+    "liveliness" INTEGER NOT NULL,
+
+    CONSTRAINT "Song_pkey" PRIMARY KEY ("id")
 );

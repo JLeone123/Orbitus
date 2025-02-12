@@ -1,77 +1,61 @@
 import cors from "cors";
-import crypto from "crypto";
 import dotenv from "dotenv";
 import express from "express";
-import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
-import { PrismaClient } from "@prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
-import { withPulse } from "@prisma/extension-pulse";
-import { request } from "http";
 
 const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-const apiKey = process.env.MODE_PULSE_API_KEY ?? "";
+/**** Prisma imports ****/
+import { ModesDB } from "./modules/store.js";
 
-if (!apiKey || apiKey === "") {
-  console.log(
-    `Please set the \`PULSE_API_KEY\` environment variable in the \`.env\` file.`
-  );
-  process.exit(1);
-}
+/**** Helper module imports ****/
+import { checkMode } from "./modules/checkMode.js";
+import { generateModeData } from "./modules/generateModeData.js";
 
-const prisma = new PrismaClient()
-  .$extends(withPulse({ apiKey: apiKey }))
-  .$extends(withAccelerate());
+// Create a new Prisma Client
+const ModesQuery = ModesDB().connect();
 
 app.get("/api/modes", async (req, res) => {
   console.log("GET /api/modes");
-  const modes = await prisma.mode.findMany({});
+  const modes = await ModesQuery.getModes();
   res.send(modes);
 });
 
-app.get("/api/mode/:modeName", async (req, res) => {});
-
 app.post("/api/mode", async (req, res) => {
   console.log("POST /api/mode");
-  const {
-    newModeName,
-    positivityScore,
-    energyScore,
-    rhythmScore,
-    livelinessScore,
-    positivitySign,
-    energySign,
-    rhythmSign,
-    livelinessSign,
-  } = req.body;
+  const body = req.body;
+  const modeCheck = checkMode(body);
+  if (!modeCheck) {
+    res
+      .status(400)
+      .send({ msg: "The provided mode characteristics are invalid" });
+  }
+  const { ...data } = req.body;
+  const mode = generateModeData(data);
 
-  const mode = await prisma.mode.create({
-    data: {
-      name: newModeName,
-      positivity: positivityScore,
-      energy: energyScore,
-      rhythm: rhythmScore,
-      liveliness: livelinessScore,
-      positivitySign,
-      energySign,
-      rhythmSign,
-      livelinessSign,
-    },
-  });
-
-  res.send(mode);
+  const newMode = await ModesQuery.createMode(mode);
+  res.send(newMode);
 });
 
 app.delete("/api/mode", async (req, res) => {
   console.log("DELETE /api/mode");
   const { id } = req.body;
 
-  const mode = await prisma.mode.delete({ where: { id } });
+  // Check if the ID is valid
+  if (id === undefined || typeof id !== "number" || isNaN(id) || id % 1 !== 0) {
+    let msg =
+      "The ID of the mode to delete is invalid.  A valid ID is a positive integer";
+    res.status(400).send({ msg });
+    return;
+  }
 
-  res.send(mode);
+  const deletedMode = await ModesQuery.deleteMode(id);
+
+  res
+    .status(200)
+    .send({ msg: "The mode was successfully deleted from the database!" });
 });
 
 app.listen(4003, () => {

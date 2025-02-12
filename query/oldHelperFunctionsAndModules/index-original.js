@@ -143,7 +143,6 @@ app.get("/allSongs", async (req, res) => {
 
   // Read all of the songs in the song database
   let allSongs = await query.readAllSongs();
-  console.log(allSongs);
 
   if (allSongs === undefined) {
     res.status(500).send({

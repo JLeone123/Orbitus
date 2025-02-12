@@ -46,6 +46,7 @@
 		let modeName = e.target.text;
 		let mode = modeList.find((mode) => mode['name'] === modeName);
 
+		// can add error checking again here
 		let positivity = Number(mode['positivity']);
 		let energy = Number(mode['energy']);
 		let rhythm = Number(mode['rhythm']);
@@ -55,6 +56,8 @@
 		let rhythmSign = mode['rhythmSign'];
 		let livelinessSign = mode['livelinessSign'];
 		let eventType = 'ModeGenerated';
+
+		console.log(mode);
 
 		let body = {
 			data: {
@@ -71,6 +74,8 @@
 			}
 		};
 
+		console.log(body);
+
 		let res = await fetch('http://localhost:4005/events/mode', {
 			method: 'POST',
 			mode: 'cors',
@@ -83,28 +88,9 @@
 
 		let data = await res.json();
 		SongStore.set(data['foundSongs']);
-
-		// let res = await fetch(`http://localhost:4005/events`, {
-		// 	method: 'POST',
-		// 	mode: 'cors',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		Accept: 'application/json'
-		// 	}
-		// 	body: JSON.stringify({
-		// 		data: {
-		// 			modeName: modeName,
-		// 			eventType: 'ModeGenerated',
-
-		// 		}
-		// 	})
-		// });
-
-		// let data = await res.json();
 	};
 
 	const deleteMode = async (e, id) => {
-		// do I need this line?
 		e.preventDefault();
 		let res = await fetch(`http://localhost:4005/events`, {
 			method: 'DELETE',
@@ -128,73 +114,6 @@
 		});
 	};
 
-	// const getPlaylistMode = async (event) => {
-	// 	let modeName = event.target.text;
-
-	// 	let res = await fetch(`http://modes:4003/readModeByName/${modeName}`, {
-	// 		method: 'GET',
-	// 		mode: 'cors',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 			Accept: 'application/json'
-	// 		}
-	// 	});
-
-	// 	// error handling here
-
-	// 	let resJson = await res.json();
-	// 	let foundMode = resJson['foundMode'][0];
-
-	// 	let positivity = Number(foundMode['positivity']);
-	// 	let energy = Number(foundMode['energy']);
-	// 	let rhythm = Number(foundMode['rhythm']);
-	// 	let liveliness = Number(foundMode['liveliness']);
-
-	// 	let positivitySign = foundMode['positivity_sign'];
-	// 	let energySign = foundMode['energy_sign'];
-	// 	let rhythmSign = foundMode['rhythm_sign'];
-	// 	let livelinessSign = foundMode['liveliness_sign'];
-
-	// 	let queryUrl =
-	// 		`http://query:4002/getSongsByMode` +
-	// 		`/${positivity}/${energy}/${rhythm}/${liveliness}` +
-	// 		`/${positivitySign}/${energySign}/${rhythmSign}/${livelinessSign}`;
-
-	// 	// make request here
-	// 	let resTwo = await fetch(queryUrl, {
-	// 		method: 'GET',
-	// 		mode: 'cors',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 			Accept: 'application/json'
-	// 		}
-	// 	});
-
-	// 	let resTwoJson = await resTwo.json();
-
-	// 	// then update SongStore
-	// 	SongStore.update((_songs) => {
-	// 		let div = document.getElementById('default-header');
-	// 		let possibleExistingHeader = document.getElementById('possible-existing-header');
-
-	// 		if (possibleExistingHeader !== null) {
-	// 			div.removeChild(possibleExistingHeader);
-	// 		}
-
-	// 		if (resTwoJson['foundSongs'].length === 0) {
-	// 			let h1 = document.createElement('h1');
-	// 			h1.setAttribute('id', 'possible-existing-header');
-
-	// 			let content = document.createTextNode(
-	// 				'There are no songs that meet the specified criteria!'
-	// 			);
-	// 			h1.appendChild(content);
-	// 			div.appendChild(h1);
-	// 		}
-
-	// 		return resTwoJson['foundSongs'];
-	// 	});
-	// };
 	$: modeList = modeList;
 </script>
 

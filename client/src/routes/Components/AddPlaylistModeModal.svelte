@@ -1,7 +1,6 @@
 <script>
 	import { ModeStore } from '../stores-folder/modeStore.js';
 	export let modeList = [];
-	console.log(modeList);
 	ModeStore.subscribe((_modes) => {
 		modeList = _modes;
 		modeList = modeList;
@@ -21,10 +20,6 @@
 		let energySign = document.getElementById('m-energy-sign').value;
 		let rhythmSign = document.getElementById('m-rhythm-sign').value;
 		let livelinessSign = document.getElementById('m-liveliness-sign').value;
-
-		console.log(newModeName);
-		console.log(positivityScore, energyScore, rhythmScore, livelinessScore);
-		console.log(positivitySign, energySign, rhythmSign, livelinessSign);
 
 		if (
 			newModeName === undefined ||
@@ -120,6 +115,7 @@
 			}
 		};
 
+		// send event
 		let res = await fetch('http://localhost:4005/events', {
 			mode: 'cors',
 			method: 'POST',
@@ -131,15 +127,11 @@
 		});
 
 		let resJson = await res.json();
-		// send event. ******/
 
 		if (resJson === undefined) {
 			console.log('500: ISE - The modes service or the event-bus could not process the request');
 			return;
 		}
-
-		console.log('resJson');
-		console.log(resJson);
 
 		let newMode = resJson;
 		let newModeObject = {
@@ -151,10 +143,10 @@
 			rhythm: newMode['rhythm'],
 			liveliness: newMode['liveliness'],
 
-			positivity_sign: newMode['positivity_sign'],
-			energy_sign: newMode['energy_sign'],
-			rhythm_sign: newMode['rhythm_sign'],
-			liveliness_sign: newMode['liveliness_sign']
+			positivitySign: newMode['positivitySign'],
+			energySign: newMode['energySign'],
+			rhythmSign: newMode['rhythmSign'],
+			livelinessSign: newMode['livelinessSign']
 		};
 
 		ModeStore.update((_modes) => {
@@ -163,13 +155,6 @@
 			modesArray = modesArray;
 			return modesArray;
 		});
-
-		// ModeStore.update((_modes) => {
-		// 	let modesArray = _modes;
-		// 	modesArray.push(newModeObject);
-		// 	modesArray = modesArray;
-		// 	return modesArray;
-		// });
 	};
 </script>
 

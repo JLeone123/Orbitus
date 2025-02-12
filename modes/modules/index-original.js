@@ -77,8 +77,6 @@ app.post("/events", async (req, res) => {
       rhythmSign,
       livelinessSign
     );
-
-    console.log(newMode);
     query.close();
 
     res.status(200).send({ newMode });

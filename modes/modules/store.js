@@ -11,7 +11,7 @@ dotenv.config({ path: "../.env" });
 
 // Declare and initialize the Prisma
 // API Key environment variable
-const apiKey = process.env.SONG_PULSE_API_KEY ?? "";
+const apiKey = process.env.MODE_PULSE_API_KEY ?? "";
 
 // Check if the Prisma Songs
 // Database API Key is defined.
@@ -22,46 +22,42 @@ if (!apiKey || apiKey === "") {
   process.exit(1);
 }
 
-const SongsDB = () => {
+const ModesDB = () => {
   return {
     connectDev: () => {
       let prisma = new PrismaClient();
-      return SongsQuery(prisma);
+      return ModesQuery(prisma);
     },
     connect: () => {
       let prisma = new PrismaClient()
         .$extends(withPulse({ apiKey: apiKey }))
         .$extends(withAccelerate());
-      return SongsQuery(prisma);
+      return ModesQuery(prisma);
     },
   };
 };
 
-const SongsQuery = (prismaClient) => {
+const ModesQuery = (prismaClient) => {
   return {
     /** Create operations **/
-    createSong: async (fields) =>
-      await prismaClient.song.create({
+    createMode: async (fields) =>
+      await prismaClient.mode.create({
         data: fields,
       }),
     /** Read operations **/
-    getSongs: async () => await prismaClient.song.findMany({}),
-    filterSongs: async (conditions) =>
-      await prismaClient.song.findMany({
-        where: conditions,
-      }),
-    /** Update operations **/
-    updateSong: async (id, fields) =>
-      await prismaClient.song.update({
-        where: { id },
-        data: fields,
-      }),
-    /** Delete operations **/
-    deleteSong: async (id) =>
-      await prismaClient.song.delete({
+    getModes: async () => {
+      let res = await prismaClient.mode.findMany({});
+      if (res.length === 0) {
+        return [];
+      }
+
+      return res;
+    },
+    deleteMode: async (id) =>
+      await prismaClient.mode.delete({
         where: { id },
       }),
   };
 };
 
-export { SongsDB };
+export { ModesDB };

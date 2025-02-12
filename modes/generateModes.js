@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const apiKey = process.env.MODE_PULSE_API_KEY ?? "";
-console.log(apiKey);
 
 if (!apiKey || apiKey === "") {
   console.log(
@@ -39,12 +38,8 @@ async function main() {
     });
   }
 
-  // let mode = await prisma.mode.delete({ where: { id: 4 } });
-
   // GET all songs from prisma and aws cloudfront.
   const modes = await prisma.mode.findMany();
-
-  console.log(modes);
 }
 
 main()

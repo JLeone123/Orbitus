@@ -6,14 +6,7 @@ export const createFormData = (fd, scf, mp3f) => {
     raw[i] = scf.buffer[i];
   }
 
-  //   for (let j = 0; j < raw2.length; j++) {
-  //     raw2[j] = mp3f.buffer[j].charCodeAt(0);
-  //   }
-
   let File = new File(mp3f.buffer, mp3f.originalname);
-  console.log(File);
-  //   newFormData.append("songCover", raw, scf.originalname);
-  //   newFormData.append("mp3Audio", new Blob(raw2), mp3f.originalname);
   newFormData.append("mp3Audio", mp3f.originalname);
   newFormData.append("songCover", scf.originalname);
   newFormData.append("genre", fd.genre);
@@ -26,26 +19,4 @@ export const createFormData = (fd, scf, mp3f) => {
   newFormData.append("eventType", fd.eventType);
   console.log(newFormData);
   return newFormData;
-
-  //   let scBlob = new Blob([scf.buffer], { type: scf.mimetype });
-  //   console.log(scBlob);
-  //   let songCoverFile = new File({
-  //     fileBits: scBlob,
-  //     fieldname: scf.fieldname,
-  //     name: scf.originalname,
-  //     encoding: scf.encoding,
-  //     type: scf.mimetype,
-  //   });
-
-  //   console.log(songCoverFile);
-
-  //   newFormData.append("songCover", songCoverFile);
-
-  //   newFormData.append("songCover", scf.buffer, {
-  //     fieldname: scf.fieldname,
-  //     name: scf.originalname,
-  //     encoding: scf.encoding,
-  //     type: scf.mimetype,
-  //     size: scf.size,
-  //   });
 };

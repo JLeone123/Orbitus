@@ -8,8 +8,6 @@ import multer from "multer";
 
 /**** Helper module imports ****/
 import { generateCondition } from "./modules/generateCondition.js";
-import { checkEvent } from "./modules/checkEvent.js";
-import { randomImageName } from "./modules/randomImageName.js";
 import { generateUniqueCallerReference } from "./modules/generateUniqueCallerReference.js";
 import { generateSignedUrls } from "./modules/generateSignedUrls.js";
 
@@ -17,23 +15,13 @@ import { generateSignedUrls } from "./modules/generateSignedUrls.js";
 import { logger } from "./modules/logger.js";
 
 /**** Amazon S3 Client imports ****/
-import {
-  S3Client,
-  PutObjectCommand,
-  DeleteObjectCommand,
-} from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 /**** Prisma imports ****/
-import { PrismaClient } from "@prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
-import { withPulse } from "@prisma/extension-pulse";
+import { SongsDB } from "./modules/store.js";
 
 /**** Amazon CloudFront imports ****/
-import {
-  CloudFrontClient,
-  CreateInvalidationCommand,
-} from "@aws-sdk/client-cloudfront";
-import { getSignedUrl } from "@aws-sdk/cloudfront-signer";
+import { CloudFrontClient } from "@aws-sdk/client-cloudfront";
 import { validateScores } from "./modules/validateScores.js";
 import { generatePrismaData } from "./modules/generatePrismaData.js";
 import { validateCharacteristics } from "./modules/validateCharacteristics.js";
@@ -57,7 +45,6 @@ const upload = multer({ storage: storage });
 // Declare and initialize Amazon S3,
 // Amazon CloudFront, and Prisma
 // environment variables
-const apiKey = process.env.SONG_PULSE_API_KEY ?? "";
 const accessKey = process.env.ACCESS_KEY;
 const secretAccessKey = process.env.SECRET_ACCESS_KEY;
 const bucketName = process.env.BUCKET_NAME;
@@ -98,31 +85,12 @@ const cpUpload = upload.fields([
   { name: "songCover", maxCount: 1 },
 ]);
 
-// Define default genres.
-let genres = ["indie", "folk", "country", "classical"];
-
-// Check if the Prisma Songs
-// Database API Key is defined.
-if (!apiKey || apiKey === "") {
-  console.log(
-    `Please set the \`PULSE_API_KEY\` environment variable in the \`.env\` file.`
-  );
-  process.exit(1);
-}
-
 // Create a new Prisma Client
-// in production mode
-// const prisma = new PrismaClient()
-//   .$extends(withPulse({ apiKey: apiKey }))
-//   .$extends(withAccelerate());
-
-// Create a new Prisma Client
-const prisma = new PrismaClient();
+const SongsQuery = SongsDB().connect();
 
 app.get("/api/songs", async (req, res) => {
   // Retrieve all songs from the Prisma songs db
-  const songs = await prisma.song.findMany({});
-
+  const songs = await SongsQuery.getSongs();
   // Utilize the songs from Prisma to generate signedUrls for each image
   let newSongs = songs.map((s) =>
     generateSignedUrls(
@@ -150,11 +118,9 @@ app.get(
       return;
     }
 
+    // Get songs by genre and/or characteristics
     const data = generatePrismaData(newCharacteristics);
-
-    let songs = await prisma.song.findMany({
-      where: data,
-    });
+    let songs = await SongsQuery.filterSongs(data);
 
     // use helper function
     let newSongs = songs.map((s) =>
@@ -211,8 +177,8 @@ app.post("/api/song", cpUpload, async (req, res) => {
   //    1. Can use a prisma query - if length is zero,
   //       then create a new artist id.
 
-  const newSong = await prisma.song.create({ data });
-
+  // Create a new song
+  const newSong = await SongsQuery.createSong(data);
   res.send(newSong);
 });
 
@@ -221,7 +187,7 @@ app.post("/api/song/mode", async (req, res) => {
   let { ...modeCharacteristics } = req.body;
   let modeCharacteristicsCheck = validateMode(modeCharacteristics);
 
-  if (modeCharacteristicsCheck === false) {
+  if (!modeCharacteristicsCheck) {
     res.send({
       msg: "The provided characteristics are invalid.  Valid scores are between 1 and 100 inclusive and valid signs include >, <, >=, and <=",
     });
@@ -231,16 +197,15 @@ app.post("/api/song/mode", async (req, res) => {
   let { positivitySign, energySign, rhythmSign, livelinessSign } =
     modeCharacteristics;
   let { positivity, energy, rhythm, liveliness } = modeCharacteristics;
+  let newData = {
+    positivity: generateCondition(positivitySign, Number(positivity)),
+    energy: generateCondition(energySign, Number(energy)),
+    rhythm: generateCondition(rhythmSign, Number(rhythm)),
+    liveliness: generateCondition(livelinessSign, Number(liveliness)),
+  };
 
-  // return conditions here.
-  let songs = await prisma.song.findMany({
-    where: {
-      positivity: generateCondition(positivitySign, Number(positivity)),
-      energy: generateCondition(energySign, Number(energy)),
-      rhythm: generateCondition(rhythmSign, Number(rhythm)),
-      liveliness: generateCondition(livelinessSign, Number(liveliness)),
-    },
-  });
+  // Filter songs by characteristics and genre.
+  let songs = await SongsQuery.filterSongs(newData);
 
   // Generate signed urls for each song.
   let newSongs = songs.map((s) =>
@@ -282,16 +247,15 @@ app.put("/api/song", cpUpload, async (req, res) => {
 
   let { newData, newMp3Audio, newSongCover } = newCharacteristics;
   let data = generatePrismaCreateData(newData);
+  let queryData = {
+    title: songName,
+    artist_name: artistName,
+  };
 
   // Get matching songs from db
   // can update to work with song ids
   // at some point!
-  const songs = await prisma.song.findMany({
-    where: {
-      title: songName,
-      artist_name: artistName,
-    },
-  });
+  const songs = await SongsQuery.filterSongs(queryData);
 
   if (songs.length === 0) {
     res.status(404).send({
@@ -302,12 +266,7 @@ app.put("/api/song", cpUpload, async (req, res) => {
 
   // Updating the songs in the db
   for (let song of songs) {
-    await prisma.song.update({
-      where: {
-        id: song["id"],
-      },
-      data,
-    });
+    await SongsQuery.updateSong(song["id"], data);
   }
 
   // Adding the new song data to s3 bucket
@@ -363,12 +322,12 @@ app.delete("/api/song", async (req, res) => {
   // The user can choose which song to delete, which will send a fetch request
   // to this endpoint. will be able to delete this query here.
   const { songName, artistName } = req.body;
-  const songs = await prisma.song.findMany({
-    where: {
-      title: songName,
-      artist_name: artistName,
-    },
-  });
+  let queryData = {
+    title: songName,
+    artist_name: artistName,
+  };
+
+  const songs = await SongsQuery.filterSongs(queryData);
 
   let params = {
     Bucket: bucketName,
@@ -384,17 +343,13 @@ app.delete("/api/song", async (req, res) => {
     },
   };
 
-  // delete found songs in the S3 bucket
+  // Delete found songs in the S3 bucket
   // and invalidate the CloudFront cache
   await deleteSongsInCloud(songs, s3, cloudFront, params, cloudFrontParams);
 
   // Deleting the songs from the database
   for (let song of songs) {
-    await prisma.song.delete({
-      where: {
-        id: song["id"],
-      },
-    });
+    await SongsQuery.deleteSong(song["id"]);
   }
 
   res.send({ msg: `The song was successfully deleted from the database!` });
