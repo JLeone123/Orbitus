@@ -42,7 +42,6 @@ app.post("/api/mode", async (req, res) => {
 app.delete("/api/mode", async (req, res) => {
   console.log("DELETE /api/mode");
   const { id } = req.body;
-
   // Check if the ID is valid
   if (id === undefined || typeof id !== "number" || isNaN(id) || id % 1 !== 0) {
     let msg =

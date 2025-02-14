@@ -17,7 +17,7 @@
 			eventType
 		};
 
-		// Sending the event to the query mode
+		// Sending the SongDeleted event to the query service
 		let sentEvent = await fetch('http://localhost:4002/api/song', {
 			method: 'DELETE',
 			mode: 'cors',

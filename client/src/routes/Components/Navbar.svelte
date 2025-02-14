@@ -91,6 +91,7 @@
 	};
 
 	const deleteMode = async (e, id) => {
+		console.log(id);
 		e.preventDefault();
 		let res = await fetch(`http://localhost:4005/events`, {
 			method: 'DELETE',

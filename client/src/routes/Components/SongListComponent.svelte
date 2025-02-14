@@ -6,6 +6,8 @@
 
 	export let songList = [];
 
+	let counter = 0;
+
 	SongStore.subscribe((_songList) => {
 		songList = _songList;
 	});
@@ -47,26 +49,77 @@
 	});
 </script>
 
-<div class="row-cols-1 song-list-component">
+<div class="song-list-component row">
 	{#if isFetching === true}
 		<SpinningLoader />
 	{:else}
-		<ul class="song-list-component__list">
-			{#each songList as song, index (song['id'])}
-				<li>
-					<SongComponent {song} />
-				</li>
-
-				{#if index <= songList.length - 1}
-					<hr class="song-list-component-divider" />
-				{/if}
-			{/each}
-		</ul>
+		<div class="col-12">
+			<div class="row">
+				<div class="col-4 d-flex justify-content-between">
+					<span class="column-header">
+						<p>#</p>
+					</span>
+				</div>
+				<div class="col-8 d-flex justify-content-between">
+					<span class="column-header">
+						<p>Song / Genre</p>
+					</span>
+					<span class="column-header">
+						<p>Characteristics</p>
+					</span>
+					<span class="column-header">
+						<p>Duration</p>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<hr class="main-header-divider" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<ul class="song-list-component__list col-12">
+						{#each songList as song, index (song['id'])}
+							<div class="row">
+								<div class="col-12">
+									<li>
+										<SongComponent
+											{index}
+											{song}
+											songId={song['song_id']}
+											artistId={song['artist_id']}
+										/>
+									</li>
+								</div>
+							</div>
+							<!-- <div class="row">
+								<div class="col-12">
+									{#if index < songList.length}
+										<hr class="song-list-component-divider" />
+									{/if}
+								</div>
+							</div> -->
+						{/each}
+					</ul>
+				</div>
+			</div>
+		</div>
 	{/if}
 </div>
 
 <style>
 	.song-list-component__list {
 		list-style: none;
+	}
+
+	.main-header-divider {
+		margin: 0 auto 1rem 0;
+	}
+
+	.column-header {
+		margin: 0;
+		padding: 0 1rem;
+		color: rgba(255, 255, 255, 0.65);
 	}
 </style>
