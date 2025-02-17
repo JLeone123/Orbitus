@@ -4,12 +4,12 @@
 	export let song = [];
 	export let songId = '';
 	export let artistId = '';
-	export let index = 1;
-	++index;
+	export let index = 0;
 	let imageUrl = song.imageUrl;
 	let audioUrl = song.audioUrl;
 	let audio = new Audio(audioUrl);
 	let isPlaying = false;
+	$: innerWidth = 0;
 	audio.setAttribute('id', `${songId}-${artistId}`);
 
 	let duration = 0;
@@ -20,7 +20,7 @@
 		let minutes = Math.floor(audio.duration / 60);
 		let seconds =
 			duration - Math.floor(duration) >= 0.5 ? Math.ceil(duration % 60) : Math.floor(duration % 60);
-		time += `${minutes}:${seconds}`;
+		time = seconds >= 10 ? `${minutes}:${seconds}` : `${minutes}:0${seconds}`;
 	});
 
 	let currentlyPlayingSong = {};
@@ -44,11 +44,10 @@
 
 	const toggleAudio = (e) => {
 		e.preventDefault();
+
 		if (isPlaying) {
-			// pause audio
 			audio.pause();
 		} else {
-			// play audio
 			audio.play();
 
 			CurrentlyPlayingSongStore.update((_currentlyPlayingSong) => {
@@ -59,7 +58,11 @@
 
 		isPlaying = !isPlaying;
 	};
+
+	$: time;
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="row song-component-row d-flex align-items-center justify-content-start">
 	<div class="col-1 gx-0 song-component-col d-flex text-secondary-emphasis number-text-col">
@@ -70,39 +73,51 @@
 			<img src={imageUrl} alt="Song cover" class="song-component-image rounded" />
 		</button>
 	</div>
-	<div class="col-8 song-component-col d-flex flex-row justify-content-between">
-		<div class="row song-metadata-row d-flex flex-row w-100">
-			<div class="col song-metadata-col d-flex align-items-center">
-				<p>
-					<span class="song-metadata-col__title">{song['title']}</span>
-					<span class="song-metadata-col__genre text-secondary-emphasis">({song['genre']})</span>
-				</p>
-			</div>
-			<div
-				class="col song-characteristics-col d-flex flex-column align-items-end
+	{#if innerWidth > 800}
+		<div class="col-8 song-component-col d-flex flex-row justify-content-between">
+			<div class="row song-metadata-row d-flex flex-row w-100">
+				<div class="col song-metadata-col d-flex align-items-center">
+					<p>
+						<span class="song-metadata-col__title">{song['title']}</span>
+						<span class="song-metadata-col__genre text-secondary-emphasis">({song['genre']})</span>
+					</p>
+				</div>
+				<div
+					class="col song-characteristics-col d-flex flex-column align-items-end
 			song-characteristics-group-col"
-			>
-				<!-- <p class="characteristics-text text-light">Characteristics</p> -->
-				<ul
-					class="song-characteristics-group list-group text-secondary-emphasis
-				d-flex flex-column"
 				>
-					<li>Positivity: {song['positivity']}</li>
-					<li>Energy: {song['energy']}</li>
-					<li>Rhythm: {song['rhythm']}</li>
-					<li>Liveliness: {song['liveliness']}</li>
-				</ul>
-			</div>
-			<div class="col song-characteristics-col d-flex justify-content-end">
-				<p class="duration-text text-secondary-emphasis">{time}</p>
+					<ul
+						class="song-characteristics-group list-group text-secondary-emphasis
+				d-flex flex-column"
+					>
+						<li>Positivity: {song['positivity']}</li>
+						<li>Energy: {song['energy']}</li>
+						<li>Rhythm: {song['rhythm']}</li>
+						<li>Liveliness: {song['liveliness']}</li>
+					</ul>
+				</div>
+				<div class="col song-characteristics-col d-flex justify-content-end">
+					<p class="duration-text text-secondary-emphasis">{time}</p>
+				</div>
 			</div>
 		</div>
-		<!-- <div class="row song-characteristics-row">
-			<div class="col song-characteristics-col">
-				<p></p>
+	{:else}
+		<div
+			class="col-8 song-component-col song-component-col-md d-flex flex-row justify-content-center"
+		>
+			<div class="row song-metadata-row d-flex flex-row w-100">
+				<div class="col song-metadata-col d-flex align-items-center">
+					<p>
+						<span class="song-metadata-col__title">{song['title']}</span>
+						<span class="song-metadata-col__genre text-secondary-emphasis">({song['genre']})</span>
+					</p>
+				</div>
+				<div class="col song-characteristics-col duration-text-col d-flex justify-content-end">
+					<p class="duration-text text-secondary-emphasis">{time}</p>
+				</div>
 			</div>
-		</div> -->
-	</div>
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -134,14 +149,20 @@
 		outline: none;
 	}
 
-	.song-characteristics-group-col {
-		position: relative;
-		right: 0.5rem;
-	}
-
 	.song-characteristics-group {
 		list-style: none;
 		font-size: 1rem;
+	}
+
+	/* Can make the responsiveness smoother, this fixes the alignment
+	of the song characteristics column for the time being */
+	@media (max-width: 1300px) {
+		.song-characteristics-group {
+			list-style: none;
+			font-size: 1rem;
+			position: relative;
+			left: 0.8rem;
+		}
 	}
 
 	.song-component-image:hover {
@@ -157,12 +178,15 @@
 		font-size: 1rem;
 	}
 
-	.characteristics-text {
-		font-size: 1rem;
-	}
-
 	.duration-text {
 		position: relative;
 		right: 0.4rem;
+	}
+
+	@media (max-width: 800px) {
+		.duration-text {
+			position: relative;
+			right: 1rem;
+		}
 	}
 </style>

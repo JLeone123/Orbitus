@@ -6,6 +6,7 @@ import QueryForm from './QueryForm.svelte';
 import SongComponent from './SongComponent.svelte';
 import SongListComponent from './SongListComponent.svelte';
 import UpdateSongComponent from './UpdateSongComponent.svelte';
+import SpinningLoader from './SpinningLoader.svelte';
 
 export {
 	AddPlaylistModeModal,
@@ -15,5 +16,6 @@ export {
 	QueryForm,
 	SongComponent,
 	SongListComponent,
+	SpinningLoader,
 	UpdateSongComponent
 };

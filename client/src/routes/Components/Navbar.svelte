@@ -246,4 +246,16 @@
 		font-size: 32px;
 		margin-left: 10px;
 	}
+
+	@media (max-width: 800px) {
+		.dawning-of-a-new-day-regular {
+			font-size: 24px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.dawning-of-a-new-day-regular {
+			font-size: 24px;
+		}
+	}
 </style>

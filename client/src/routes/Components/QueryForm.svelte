@@ -1,6 +1,18 @@
 <script>
 	import { SongStore } from '../stores-folder/store.js';
 
+	import { onMount } from 'svelte';
+
+	let queryButtonExpanded = 'false';
+	let formExpanded = 'collapse';
+	$: innerWidth = 0;
+
+	onMount(() => {
+		innerWidth = window.innerWidth;
+	});
+
+	export let position = 'position-fixed';
+
 	let songPositivityScore = 50.0;
 	let songEnergyScore = 50.0;
 	let songRhythmScore = 50.0;
@@ -159,16 +171,41 @@
 		// add default text header
 		// make second endpoint to handle genre
 	};
+
+	$: {
+		if (innerWidth > 1000) {
+			queryButtonExpanded = 'true';
+			formExpanded = 'collapse show';
+		} else {
+			queryButtonExpanded = 'false';
+			formExpanded = 'collapse';
+		}
+	}
 </script>
 
-<div class="position-fixed">
-	<form>
+<svelte:window bind:innerWidth />
+
+<div class={`${position} query-form-container`}>
+	<p class="d-flex gap-1 justify-content-center">
+		<button
+			class="btn btn-primary query-form-button"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#collapseExample"
+			data-bs-parent="collapseExample"
+			aria-expanded={`${innerWidth > 1000 ? 'true' : 'false'}`}
+			aria-controls="collapseExample"
+		>
+			Generate Playlist
+		</button>
+	</p>
+	<form class={`query-form ${formExpanded}`} id="collapseExample">
 		<fieldset>
-			<legend>Generate Playlist</legend>
+			<!-- <legend class="query-form-header">Generate Playlist</legend> -->
 			<select
 				id="genre-select"
 				class="form-select form-select-lg mb-3"
-				aria-label="Large select example"
+				aria-label="Large select form"
 			>
 				<option selected>Select Genre</option>
 				<option value="indie">Indie</option>
@@ -250,16 +287,5 @@
 <style>
 	.form-range {
 		width: 20rem;
-	}
-	@media (max-width: 1000px) {
-		.form-range {
-			width: 15rem;
-		}
-	}
-
-	@media (max-width: 800px) {
-		.form-range {
-			width: 10rem;
-		}
 	}
 </style>

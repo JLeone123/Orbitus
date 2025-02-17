@@ -5,8 +5,7 @@
 	import { SongStore } from '../stores-folder/store.js';
 
 	export let songList = [];
-
-	let counter = 0;
+	$: innerWidth = 0;
 
 	SongStore.subscribe((_songList) => {
 		songList = _songList;
@@ -47,7 +46,11 @@
 			isFetching = false;
 		}
 	});
+
+	$: songList;
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="song-list-component row">
 	{#if isFetching === true}
@@ -60,17 +63,28 @@
 						<p>#</p>
 					</span>
 				</div>
-				<div class="col-8 d-flex justify-content-between">
-					<span class="column-header">
-						<p>Song / Genre</p>
-					</span>
-					<span class="column-header">
-						<p>Characteristics</p>
-					</span>
-					<span class="column-header">
-						<p>Duration</p>
-					</span>
-				</div>
+				{#if innerWidth > 800}
+					<div class="col-8 d-flex justify-content-between">
+						<span class="column-header">
+							<p>Song / Genre</p>
+						</span>
+						<span class="column-header">
+							<p>Characteristics</p>
+						</span>
+						<span class="column-header">
+							<p>Duration</p>
+						</span>
+					</div>
+				{:else}
+					<div class="col-8 d-flex justify-content-between">
+						<span class="column-header">
+							<p class="song-genre-header">Song / Genre</p>
+						</span>
+						<span class="column-header">
+							<p>Duration</p>
+						</span>
+					</div>
+				{/if}
 			</div>
 			<div class="row">
 				<div class="col-12">
@@ -85,7 +99,7 @@
 								<div class="col-12">
 									<li>
 										<SongComponent
-											{index}
+											index={index + 1}
 											{song}
 											songId={song['song_id']}
 											artistId={song['artist_id']}
@@ -93,13 +107,6 @@
 									</li>
 								</div>
 							</div>
-							<!-- <div class="row">
-								<div class="col-12">
-									{#if index < songList.length}
-										<hr class="song-list-component-divider" />
-									{/if}
-								</div>
-							</div> -->
 						{/each}
 					</ul>
 				</div>
@@ -121,5 +128,12 @@
 		margin: 0;
 		padding: 0 1rem;
 		color: rgba(255, 255, 255, 0.65);
+	}
+
+	@media (max-width: 800px) {
+		.song-genre-header {
+			position: relative;
+			left: 1rem;
+		}
 	}
 </style>
