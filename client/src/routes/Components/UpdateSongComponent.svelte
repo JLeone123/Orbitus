@@ -1,6 +1,8 @@
 <script>
 	import { Mp3Store } from '../stores-folder/mp3Store.js';
 	import { SongCoverStore } from '../stores-folder/songCoverStore.js';
+	import { FetchingStore } from '../stores-folder/fetchingStore.js';
+	import { fetchSongs } from '../hooks/fetchSongs.js';
 
 	let mp3Audio = new File([], '');
 	let songCover = new File([], '');
@@ -24,6 +26,8 @@
 	};
 
 	const handleUpdateForm = async () => {
+		FetchingStore.set(true);
+
 		let genre = document.getElementById('u-genre-input').value;
 		if (genre !== 'Choose genre...') {
 			genre = genre.slice(2);
@@ -52,6 +56,8 @@
 
 		let resJson = await res.json();
 
+		await fetchSongs();
+
 		document.getElementById('u-genre-input').value = '';
 		document.getElementById('u-song-name-input').value = '';
 		document.getElementById('u-artist-name-input').value = '';
@@ -61,6 +67,8 @@
 		document.getElementById('u-song-energy-score').value = '';
 		document.getElementById('u-song-rhythm-score').value = '';
 		document.getElementById('u-song-liveliness-score').value = '';
+
+		FetchingStore.set(false);
 	};
 </script>
 

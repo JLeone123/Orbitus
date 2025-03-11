@@ -147,6 +147,8 @@
 			heading.setAttribute('id', 'possible-existing-heading');
 			let content = document.createTextNode('There are no songs that meet the specified criteria!');
 			heading.appendChild(content);
+			heading.style.textAlign = 'center';
+			heading.style.color = '#dee2e6';
 			div.appendChild(heading);
 		}
 

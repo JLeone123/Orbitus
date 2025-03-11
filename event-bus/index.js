@@ -43,34 +43,33 @@ const servicePorts = [4002];
 
 const modePort = 4003;
 
+const acceptedEventTypes = ["ModeCreated", "ModeGenerated"];
+
 app.post("/events/mode", async (req, res) => {
-  let modeName = req.body.data.modeName;
-  let positivity = Number(req.body.data.positivity);
-  let energy = Number(req.body.data.energy);
-  let rhythm = Number(req.body.data.rhythm);
-  let liveliness = Number(req.body.data.liveliness);
-  let positivitySign = req.body.data.positivitySign;
-  let energySign = req.body.data.energySign;
-  let rhythmSign = req.body.data.rhythmSign;
-  let livelinessSign = req.body.data.livelinessSign;
-  let eventType = req.body.data.eventType;
+  const { event } = req.body;
+  const { data } = event;
 
-  // validate the data
+  if (!data || typeof data !== "object") {
+    res.status(400).send({ msg: "Event data is undefined" });
+    logger.error(JSON.stringify({ msg: "Event data is undefined" }));
+    return;
+  }
 
-  // can maybe remove
-  let modeData = {
-    positivity,
-    energy,
-    rhythm,
-    liveliness,
-    positivitySign,
-    energySign,
-    rhythmSign,
-    livelinessSign,
-  };
+  const { eventType } = data;
 
-  let newModeName = modeName.replace(/\s+/g, "-").toLowerCase();
-  console.log(newModeName);
+  if (
+    !data ||
+    typeof eventType !== "string" ||
+    !acceptedEventTypes.includes(eventType)
+  ) {
+    res.status(400).send({ msg: "Event type is invalid" });
+    logger.error(JSON.stringify({ msg: "Event type is invalid" }));
+    return;
+  }
+
+  // Validate event here.
+  const checkedEvent = checkEvent(event, eventType, data, res);
+
   let songs = [];
   if (eventType === "ModeGenerated") {
     try {
@@ -84,12 +83,11 @@ app.post("/events/mode", async (req, res) => {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          body: JSON.stringify(modeData),
+          body: JSON.stringify({ event }),
         }
       );
 
       songs = await generatedModeEvent.json();
-      console.log(songs);
     } catch (error) {
       res.send({ msg: error });
       return;
@@ -104,122 +102,7 @@ app.post("/events", cpUpload, async (req, res) => {
     JSON.stringify({ message: "request", method: "POST", endpoint: "events" })
   );
 
-  let {
-    newModeName,
-    positivityScore,
-    energyScore,
-    rhythmScore,
-    livelinessScore,
-    positivitySign,
-    energySign,
-    rhythmSign,
-    livelinessSign,
-    eventType,
-  } = req.body.data;
-
-  let event = {
-    newModeName,
-    positivityScore,
-    energyScore,
-    rhythmScore,
-    livelinessScore,
-    positivitySign,
-    energySign,
-    rhythmSign,
-    livelinessSign,
-  };
-
-  if (eventType === "SongCreated") {
-    for (const port of servicePorts) {
-      try {
-        console.log(
-          `(${process.pid}) Event Bus (Sending Event to ${port}) ${eventType}`
-        );
-
-        // create a new FormData object
-        let mp3Audio = req.files["mp3Audio"][0].buffer;
-        let songCover = req.files["songCover"][0].buffer;
-
-        let songParams = {
-          genre: req.body.genre,
-          songName: req.body.songName,
-          artistName: req.body.artistName,
-          positivity: req.body.positivity,
-          energy: req.body.energy,
-          rhythm: req.body.rhythm,
-          liveliness: req.body.liveliness,
-          mp3Audio: mp3Audio,
-        };
-
-        // let sentEvent = await fetch("http://query:4002/api/song", {
-        let sentEvent = await fetch("http://localhost:4002/api/song", {
-          method: "POST",
-          mode: "cors",
-          body: JSON.stringify(songParams),
-          // headers: {
-          //   "Content-Type": "application/json",
-          //   Accept: "application/json",
-          // },
-        });
-
-        let sentEventJson = await sentEvent.json();
-        res.send({ sentEventJson });
-        return;
-      } catch (error) {
-        res.send({ msg: error });
-        return;
-      }
-    }
-    // Sending ModeCreated event
-  } else if (eventType === "ModeCreated") {
-    try {
-      console.log(
-        `(${process.pid}) Event Bus (Sending Event to ${modePort}) ${eventType}`
-      );
-
-      // Send the SongCreated event to the query service
-      // in POST requests with the event object
-      // let sentEvent = await fetch(`http://modes:${modePort}/api/mode`, {
-      let sentEvent = await fetch(`http://localhost:${modePort}/api/mode`, {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify(event),
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-
-      // Check if the sentEvent request successfully completed
-      let sentEventJson = await sentEvent.json();
-
-      if (sentEventJson === undefined) {
-        console.log("The modes service could not handle the request right now");
-        res.status(500).send({
-          msg: "The modes service could not handle the request right now",
-        });
-        return;
-      }
-
-      console.log(sentEventJson);
-
-      res.status(200).send(sentEventJson);
-      return;
-    } catch (err) {
-      console.log(err);
-      res.status(400).send({ msg: err });
-      logger.error(JSON.stringify({ msg: err }));
-      logger.http(
-        JSON.stringify({
-          message: "response",
-          method: "POST",
-          endpoint: "events",
-          statusCode: res.statusCode,
-        })
-      );
-      return;
-    }
-  }
+  const { event } = req.body;
 
   // Since only events should be sent to the event bus,
   // we check if an event was passed to the event-bus
@@ -243,24 +126,61 @@ app.post("/events", cpUpload, async (req, res) => {
 
   // Check if the event object is valid and
   // contains valid data
-  let isEventValid = checkEvent(event, event.type, event.data, res);
+  checkEvent(event, event.data.type, event.data, res);
+  const eventType = event.data.type;
 
-  if (!isEventValid) {
-    logger.http(
-      JSON.stringify({
-        message: "response",
+  console.log(`${process.pid} Event Bus (Received Event) ${eventType}`);
+
+  // Sending ModeCreated event
+  if (eventType === "ModeCreated") {
+    try {
+      console.log(
+        `(${process.pid}) Event Bus (Sending Event to ${modePort}) ${eventType}`
+      );
+
+      // Send the SongCreated event to the query service
+      // in POST requests with the event object
+      // let sentEvent = await fetch(`http://modes:${modePort}/api/mode`, {
+      let sentEvent = await fetch(`http://localhost:${modePort}/api/mode`, {
         method: "POST",
-        endpoint: "events",
-        statusCode: res.statusCode,
-      })
-    );
-    return;
+        mode: "cors",
+        body: JSON.stringify({ event }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      // Check if the sentEvent request successfully completed
+      let sentEventJson = await sentEvent.json();
+
+      if (sentEventJson === undefined) {
+        console.log("The modes service could not handle the request right now");
+        res.status(500).send({
+          msg: "The modes service could not handle the request right now",
+        });
+        return;
+      }
+
+      res.status(200).send(sentEventJson);
+      return;
+    } catch (err) {
+      console.log(err);
+      res.status(400).send({ msg: err });
+      logger.error(JSON.stringify({ msg: err }));
+      logger.http(
+        JSON.stringify({
+          message: "response",
+          method: "POST",
+          endpoint: "events",
+          statusCode: res.statusCode,
+        })
+      );
+      return;
+    }
   }
 
-  const type = event.type;
-
-  console.log(`${process.pid} Event Bus (Received Event) ${type}`);
-
+  // After creating a song, the event-bus can notify other services here.
   if (type === "SongCreated") {
     for (const port of servicePorts) {
       try {
@@ -419,6 +339,8 @@ app.put("/events", async (req, res) => {
 
   console.log(`${process.pid} Event Bus (Received Event) ${type}`);
 
+  // After updating a song, the event-bus can notify other microservices
+  // that the song was updated.
   if (type === "SongUpdated") {
     for (const port of servicePorts) {
       try {
@@ -551,10 +473,11 @@ app.put("/events", async (req, res) => {
   }
 });
 
-app.delete("/events", async (req, res) => {
+app.delete("/api/events", async (req, res) => {
   logger.http(
     JSON.stringify({ message: "request", method: "DELETE", endpoint: "events" })
   );
+
   // Get event object from the request body.
   let { event } = req.body;
 
@@ -578,7 +501,7 @@ app.delete("/events", async (req, res) => {
     return;
   }
 
-  let type = event.type;
+  let type = event.data.type;
 
   console.log(`${process.pid} Event Bus (Received Event) ${type}`);
 
@@ -592,10 +515,10 @@ app.delete("/events", async (req, res) => {
         // Send the SongCreated event to the query service
         // in POST requests with the event object
         // let sentEvent = await fetch(`http://query:${port}/events`, {
-        let sentEvent = await fetch(`http://localhost:${port}/events`, {
+        let sentEvent = await fetch(`http://localhost:${port}/api/song`, {
           method: "DELETE",
           mode: "cors",
-          body: JSON.stringify(event),
+          body: JSON.stringify({ event }),
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
@@ -669,40 +592,10 @@ app.delete("/events", async (req, res) => {
           return;
         }
 
-        let deletedSong = {
-          id: sentEventJson["deletedSong"]["id"],
-          genre: sentEventJson["deletedSong"]["genre"],
-          songName: sentEventJson["deletedSong"]["songName"],
-          artistName: sentEventJson["deletedSong"]["artistName"],
-          mp3File: sentEventJson["deletedSong"]["mp3File"],
-          positivity: Number(sentEventJson["deletedSong"]["positivity"]),
-          energy: Number(sentEventJson["deletedSong"]["energy"]),
-          rhythm: Number(sentEventJson["deletedSong"]["rhythm"]),
-          liveliness: Number(sentEventJson["deletedSong"]["liveliness"]),
-        };
-
-        if (
-          sentEventJson.hasOwnProperty("deletedSong") &&
-          sentEventJson["deletedSong"]["songName"] === event.data["songName"] &&
-          sentEventJson["deletedSong"]["artistName"] ===
-            event.data["artistName"]
-        ) {
-          res.status(201).send({ deletedSong });
-          logger.http(
-            JSON.stringify({
-              message: "response",
-              method: "DELETE",
-              endpoint: "events",
-              statusCode: res.statusCode,
-            })
-          );
-          logger.error(
-            JSON.stringify({
-              msg: `The song ${deletedSong["songName"]} by artist ${deletedSong["artistName"]} was successfully deleted`,
-            })
-          );
-          return;
-        }
+        res.send({
+          msg: "The song was successfully deleted from the database!",
+        });
+        return;
       } catch (err) {
         console.log(err);
         res.status(400).send({ msg: err });
@@ -731,7 +624,7 @@ app.delete("/events", async (req, res) => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        id,
+        event,
       }),
     });
 

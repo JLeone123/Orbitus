@@ -246,7 +246,8 @@ app.post("/api/song", cpUpload, async (req, res) => {
 
 app.post("/api/song/mode", async (req, res) => {
   // Check mode characteristics data.
-  let { ...modeCharacteristics } = req.body;
+  let { ...modeCharacteristics } = req.body.event.data;
+  console.log(modeCharacteristics);
   let modeCharacteristicsCheck = validateMode(modeCharacteristics);
 
   if (!modeCharacteristicsCheck) {
@@ -321,7 +322,7 @@ app.put("/api/song", cpUpload, async (req, res) => {
     songCover
   );
 
-  if (!modeCharacteristicsCheck) {
+  if (!newCharacteristics) {
     res.status(400).send({
       msg: "The provided characteristics are invalid.  Valid scores are between 1 and 100 inclusive and valid signs include >, <, >=, and <=",
     });
@@ -376,6 +377,45 @@ app.put("/api/song", cpUpload, async (req, res) => {
   const createSongCommand = new PutObjectCommand(songParams);
   await s3.send(createSongCommand);
 
+  let artistQueryData = {
+    artist_name: artistName,
+  };
+
+  const mp3AudioName = songs[0]["audio"].slice(6);
+  const songCoverName = songs[0]["image_art"].slice(7);
+
+  const artistSongs = await SongsQuery.filterSongs(artistQueryData);
+
+  let imageSongCoverCount = 0;
+  let mp3AudioCount = 0;
+
+  artistSongs.forEach((song) => {
+    if (song["audio"].slice(6) === mp3AudioName) {
+      mp3AudioCount++;
+    }
+
+    if (song["image_art"].slice(7) === songCoverName) {
+      imageSongCoverCount++;
+    }
+  });
+
+  if (mp3AudioCount > 1 && imageSongCoverCount > 1) {
+    await SongsQuery.deleteSong(songs[0]["id"]);
+    res
+      .status(200)
+      .send({ msg: `Successfully deleted the song "${songs[0]["title"]}` });
+    logger.info({ msg: `Successfully deleted the song "${songs[0]["title"]}` });
+    logger.http(
+      JSON.stringify({
+        message: "response",
+        method: "DELETE",
+        endpoint: "/api/song",
+        statusCode: res.statusCode,
+      })
+    );
+    return;
+  }
+
   // Deleting the old song data from the s3 bucket
   let params = {
     Bucket: bucketName,
@@ -419,7 +459,9 @@ app.delete("/api/song", async (req, res) => {
   // which can consist of the song's ID, cover art, name, and artist.
   // The user can choose which song to delete, which will send a fetch request
   // to this endpoint. will be able to delete the song using this query here.
-  const { songName, artistName } = req.body;
+  const { event } = req.body;
+  const { songName, artistName } = event["data"];
+
   let queryData = {
     title: songName,
     artist_name: artistName,
@@ -486,6 +528,7 @@ app.delete("/api/song", async (req, res) => {
         statusCode: res.statusCode,
       })
     );
+    return;
   }
 
   let params = {

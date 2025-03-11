@@ -57,24 +57,22 @@
 		let livelinessSign = mode['livelinessSign'];
 		let eventType = 'ModeGenerated';
 
-		console.log(mode);
-
 		let body = {
-			data: {
-				modeName,
-				positivity,
-				energy,
-				rhythm,
-				liveliness,
-				positivitySign,
-				energySign,
-				rhythmSign,
-				livelinessSign,
-				eventType
+			event: {
+				data: {
+					modeName,
+					positivity,
+					energy,
+					rhythm,
+					liveliness,
+					positivitySign,
+					energySign,
+					rhythmSign,
+					livelinessSign,
+					eventType
+				}
 			}
 		};
-
-		console.log(body);
 
 		let res = await fetch('http://localhost:4005/events/mode', {
 			method: 'POST',
@@ -91,9 +89,8 @@
 	};
 
 	const deleteMode = async (e, id) => {
-		console.log(id);
 		e.preventDefault();
-		let res = await fetch(`http://localhost:4005/events`, {
+		let res = await fetch(`http://localhost:4005/api/events`, {
 			method: 'DELETE',
 			mode: 'cors',
 			headers: {
@@ -102,8 +99,10 @@
 			},
 			body: JSON.stringify({
 				event: {
-					id: id,
-					type: 'ModeDeleted'
+					data: {
+						id: id,
+						type: 'ModeDeleted'
+					}
 				}
 			})
 		});
@@ -120,7 +119,7 @@
 
 <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand dawning-of-a-new-day-regular" href="#/">Orbitus</a>
+		<a class="navbar-brand dawning-of-a-new-day-regular" href="/">Orbitus</a>
 		<button
 			class="navbar-toggler"
 			type="button"

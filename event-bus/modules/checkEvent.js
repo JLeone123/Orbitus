@@ -4,6 +4,8 @@
 // e = event object, t = type, d = data, r = Express HTTP response
 import { logger } from "./logger.js";
 
+// const eventTypes = ["SongsRetrieved"];
+
 export const checkEvent = (e, t, d, r) => {
   // if the event-type or event-data is undefined,
   // send a 400 status code.
@@ -48,6 +50,22 @@ export const checkEvent = (e, t, d, r) => {
     return false;
   }
 
+  /**** Checking each event ****/
+
+  if (t === "SongsRetrieved") {
+    if (d.msg !== "Songs were successfully retrieved by the query service") {
+      logger.error(
+        JSON.stringify({
+          msg: "Event Error: The songs were not successfully retrieved by the query service",
+        })
+      );
+      r.status(400).send({
+        msg: "Event Error: The songs were not successfully retrieved by the query service",
+      });
+      return false;
+    }
+  }
+
   if (t === "ModeCreated") {
     if (
       d.newModeName === undefined ||
@@ -56,7 +74,7 @@ export const checkEvent = (e, t, d, r) => {
     ) {
       logger.error("EventType Error: Please provide a newModeName");
       r.status(400).send({ msg: "Please provide a newModeName" });
-      return;
+      return false;
     }
 
     if (

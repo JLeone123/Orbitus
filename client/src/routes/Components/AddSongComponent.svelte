@@ -1,8 +1,9 @@
 <script>
 	import axios from 'axios';
-	import { SongStore } from '../stores-folder/store.js';
 	import { Mp3Store } from '../stores-folder/mp3Store.js';
 	import { SongCoverStore } from '../stores-folder/songCoverStore.js';
+	import { FetchingStore } from '../stores-folder/fetchingStore.js';
+	import { fetchSongs } from '../hooks/fetchSongs.js';
 
 	let mp3Audio = new File([], '');
 	let songCover = new File([], '');
@@ -26,6 +27,7 @@
 	};
 
 	const handleAddForm = async () => {
+		FetchingStore.set(true);
 		let genre = document.getElementById('a-genre-input').value;
 
 		// For the genre input, trim the first two characters off of the input
@@ -54,11 +56,13 @@
 		formData.append('songCover', songCover);
 		formData.append('eventType', 'SongCreated');
 
-		let res = await fetch('http://localhost:4002/api/song', {
+		await fetch('http://localhost:4002/api/song', {
 			method: 'POST',
 			mode: 'cors',
 			body: formData
 		});
+
+		await fetchSongs();
 
 		document.getElementById('a-genre-input').value = '';
 		document.getElementById('a-song-name-input').value = '';
@@ -69,6 +73,7 @@
 		document.getElementById('a-song-energy-score').value = '';
 		document.getElementById('a-song-rhythm-score').value = '';
 		document.getElementById('a-song-liveliness-score').value = '';
+		FetchingStore.set(false);
 	};
 </script>
 

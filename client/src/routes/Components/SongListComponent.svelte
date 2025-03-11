@@ -3,6 +3,8 @@
 	import SpinningLoader from './SpinningLoader.svelte';
 	import { onMount } from 'svelte';
 	import { SongStore } from '../stores-folder/store.js';
+	import { FetchingStore } from '../stores-folder/fetchingStore.js';
+	import { fetchSongs } from '../hooks/fetchSongs.js';
 
 	export let songList = [];
 	$: innerWidth = 0;
@@ -13,41 +15,26 @@
 
 	let isFetching = false;
 
-	onMount(async () => {
-		// Send a GET request to the query service to
-		// get a list of all the songs in the database
-		// with their image and mp3 file paths
-
-		// query service endpoint to get all songs
-		try {
-			isFetching = true;
-			const res = await fetch('http://localhost:4002/api/songs', {
-				method: 'GET',
-				mode: 'cors',
-				headers: {
-					'Content-Type': 'application/json',
-					Accept: 'application/json'
-				}
-			});
-
-			// Get list of all of the songs
-			// with their image and mp3 file paths
-			// by parsing the JSON response
-			const data = await res.json();
-
-			if (data === undefined) {
-				SongStore.set([]);
-			} else {
-				SongStore.update(() => (songList = data));
-			}
-
-			isFetching = false;
-		} catch (e) {
-			isFetching = false;
-		}
+	FetchingStore.subscribe((_isFetching) => {
+		isFetching = _isFetching;
 	});
 
+	onMount(async () => {
+		innerWidth = screen.innerWidth;
+		FetchingStore.set(true);
+		// Send a GET request to the query service to
+		// get a list of all the songs in the database
+		// with their mp3 audio and cover art presigned
+		// URLs from AWS CloudFront
+		await fetchSongs();
+		FetchingStore.set(false);
+	});
+
+	// Add reactive statement to update the
+	// UI when the current song list on the
+	// screen changes
 	$: songList;
+	$: isFetching;
 </script>
 
 <svelte:window bind:innerWidth />

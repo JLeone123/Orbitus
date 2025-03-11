@@ -1,3 +1,11 @@
 error: EventType Error: Please provide a valid energySign
 error: EventType Error: Please provide a valid energySign
 error: EventType Error: Please provide a valid energySign
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The ID of the mode to delete is invalid.  A valid ID is a positive integer"}
+error: {"msg":"The provided mode characteristics are invalid"}
+error: {"msg":"The provided mode characteristics are invalid"}

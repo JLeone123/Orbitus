@@ -1,7 +1,11 @@
 <script>
 	import { SongStore } from '../stores-folder/store.js';
+	import { FetchingStore } from '../stores-folder/fetchingStore.js';
+	import { fetchSongs } from '../hooks/fetchSongs.js';
 
 	const handleDeleteForm = async () => {
+		FetchingStore.set(true);
+
 		let songNameInput = document.getElementById('d-song-name-input').value;
 		let artistNameInput = document.getElementById('d-artist-name-input').value;
 
@@ -9,16 +13,18 @@
 			return;
 		}
 
-		let eventType = 'SongDeleted';
-
 		let body = {
-			songName: songNameInput,
-			artistName: artistNameInput,
-			eventType
+			event: {
+				data: {
+					songName: songNameInput,
+					artistName: artistNameInput,
+					type: 'SongDeleted'
+				}
+			}
 		};
 
 		// Sending the SongDeleted event to the query service
-		let sentEvent = await fetch('http://localhost:4002/api/song', {
+		let sentEvent = await fetch('http://localhost:4005/api/events', {
 			method: 'DELETE',
 			mode: 'cors',
 			headers: {
@@ -28,7 +34,8 @@
 			body: JSON.stringify(body)
 		});
 
-		return;
+		await fetchSongs();
+		FetchingStore.set(false);
 	};
 </script>
 

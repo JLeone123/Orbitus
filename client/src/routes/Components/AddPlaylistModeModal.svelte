@@ -111,11 +111,11 @@
 				energySign,
 				rhythmSign,
 				livelinessSign,
-				eventType: 'ModeCreated'
+				type: 'ModeCreated'
 			}
 		};
 
-		// send event
+		// Send "ModeCreated" event to the event bus
 		let res = await fetch('http://localhost:4005/events', {
 			mode: 'cors',
 			method: 'POST',
@@ -123,7 +123,7 @@
 				'Content-Type': 'application/json',
 				Accept: 'application/json'
 			},
-			body: JSON.stringify(event)
+			body: JSON.stringify({ event })
 		});
 
 		let resJson = await res.json();

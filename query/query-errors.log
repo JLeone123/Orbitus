@@ -34,3 +34,5 @@ error: {"msg":"ISE: Song could not be found in the database"}
 error: {"msg":"ISE: Song could not be found in the database"}
 error: {"msg":"ISE: Song could not be found in the database"}
 error: {"msg":"The song was not found in the database"}
+error: [object Object]
+error: [object Object]

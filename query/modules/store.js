@@ -45,7 +45,10 @@ const SongsQuery = (prismaClient) => {
         data: fields,
       }),
     /** Read operations **/
-    getSongs: async () => await prismaClient.song.findMany({}),
+    getSongs: async () =>
+      await prismaClient.song.findMany({
+        take: 50,
+      }),
     filterSongs: async (conditions) =>
       await prismaClient.song.findMany({
         where: conditions,

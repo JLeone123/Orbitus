@@ -9,7 +9,7 @@
 	let audioUrl = song.audioUrl;
 	let audio = new Audio(audioUrl);
 	let isPlaying = false;
-	$: innerWidth = 0;
+	$: innerWidth = 0; // can remove
 	audio.setAttribute('id', `${songId}-${artistId}`);
 
 	let duration = 0;
@@ -45,21 +45,54 @@
 	const toggleAudio = (e) => {
 		e.preventDefault();
 
-		if (isPlaying) {
-			audio.pause();
-		} else {
-			audio.play();
-
-			CurrentlyPlayingSongStore.update((_currentlyPlayingSong) => {
-				_currentlyPlayingSong.currentTime = 0;
-				return audio;
-			});
-		}
-
-		isPlaying = !isPlaying;
+		CurrentlyPlayingSongStore.update((_currentlyPlayingSong) => {
+			let currentSong = _currentlyPlayingSong;
+			// playing first song
+			if (typeof currentSong === 'object' && !currentSong['id']) {
+				audio.play();
+				isPlaying = true;
+				// playing a different song while another is playing
+			} else if (
+				typeof currentSong === 'object' &&
+				currentSong['id'] &&
+				audio['id'] !== currentSong['id'] &&
+				isPlaying
+			) {
+				currentSong.pause();
+				currentSong.currentTime = 0;
+				audio.play();
+			} else if (
+				typeof currentSong === 'object' &&
+				currentSong['id'] &&
+				audio['id'] !== currentSong['id'] &&
+				!isPlaying
+			) {
+				currentSong.pause();
+				currentSong.currentTime = 0;
+				audio.play();
+				isPlaying = true;
+			} else if (
+				typeof currentSong === 'object' &&
+				currentSong['id'] === audio['id'] &&
+				isPlaying
+			) {
+				currentSong.currentTime = 0;
+				audio.pause();
+				isPlaying = false;
+			} else if (
+				typeof currentSong === 'object' &&
+				currentSong['id'] === audio['id'] &&
+				!isPlaying
+			) {
+				currentSong.currentTime = 0;
+				audio.play();
+				isPlaying = true;
+			}
+			return audio;
+		});
 	};
 
-	$: time;
+	$: time; // can remove
 </script>
 
 <svelte:window bind:innerWidth />
