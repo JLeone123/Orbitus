@@ -370,4 +370,4 @@ This project is licensed under the **Attribution-NonCommercial-ShareAlike 4.0 In
 You are free to share and adapt this work **for non-commercial purposes only**, as long as you provide appropriate credit and distribute any modifications under the same license.
 
 For more details, see the full [LICENSE](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-A markdown template for the full [license](./LICENSE-CC-BY-NC-SA-4.0.md) is here
+A markdown file version of the full [license](./LICENSE-CC-BY-NC-SA-4.0.md) is here
