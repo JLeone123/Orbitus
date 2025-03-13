@@ -2,7 +2,7 @@
 
 A playlist generator using Svelte, Bootstrap 5, Node.js, Express.js, and PostgreSQL
 
-## Music Credit - All songs used from (Uppbeat)[https://uppbeat.io/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2jZT-9FNmwP6WWtToyG52bA_ebnKFkOpXfCUlFyoHtsW8_EWIYZYIaAjwAEALw_wcB]
+## Music Credit - All songs used from [Uppbeat](https://uppbeat.io/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2jZT-9FNmwP6WWtToyG52bA_ebnKFkOpXfCUlFyoHtsW8_EWIYZYIaAjwAEALw_wcB)
 
 #### (updated March 12th, 2025)
 
