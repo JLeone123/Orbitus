@@ -20,8 +20,8 @@
 	});
 
 	onMount(async () => {
-		innerWidth = screen.innerWidth;
 		FetchingStore.set(true);
+		innerWidth = window.innerWidth;
 		// Send a GET request to the query service to
 		// get a list of all the songs in the database
 		// with their mp3 audio and cover art presigned
@@ -35,6 +35,7 @@
 	// screen changes
 	$: songList;
 	$: isFetching;
+	$: innerWidth;
 </script>
 
 <svelte:window bind:innerWidth />

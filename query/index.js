@@ -101,7 +101,9 @@ app.get("/api/songs", async (req, res) => {
   }
 
   // Utilizing the songs from Prisma to generate signedUrls for each image
-  logger.info({ msg: "Generating signed urls for each retrieved song" });
+  logger.info(
+    JSON.stringify({ msg: "Generating signed urls for each retrieved song" })
+  );
   let newSongs = songs.map((s) =>
     generateSignedUrls(
       s,

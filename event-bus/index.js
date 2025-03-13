@@ -73,19 +73,18 @@ app.post("/events/mode", async (req, res) => {
   let songs = [];
   if (eventType === "ModeGenerated") {
     try {
-      // let generatedModeEvent = await fetch("http://query:4002/api/song/mode", {
-      let generatedModeEvent = await fetch(
-        "http://localhost:4002/api/song/mode",
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({ event }),
-        }
-      );
+      let generatedModeEvent = await fetch("http://query:4002/api/song/mode", {
+        // let generatedModeEvent = await fetch(
+        //   "http://localhost:4002/api/song/mode",
+        //   {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ event }),
+      });
 
       songs = await generatedModeEvent.json();
     } catch (error) {
@@ -140,8 +139,8 @@ app.post("/events", cpUpload, async (req, res) => {
 
       // Send the SongCreated event to the query service
       // in POST requests with the event object
-      // let sentEvent = await fetch(`http://modes:${modePort}/api/mode`, {
-      let sentEvent = await fetch(`http://localhost:${modePort}/api/mode`, {
+      let sentEvent = await fetch(`http://modes:${modePort}/api/mode`, {
+        // let sentEvent = await fetch(`http://localhost:${modePort}/api/mode`, {
         method: "POST",
         mode: "cors",
         body: JSON.stringify({ event }),
@@ -190,7 +189,8 @@ app.post("/events", cpUpload, async (req, res) => {
 
         // Send the SongCreated event to the query service
         // in POST requests with the event object
-        let sentEvent = await fetch(`http://localhost:${port}/events`, {
+        let sentEvent = await fetch(`http://query:4002/events`, {
+          // let sentEvent = await fetch(`http://localhost:${port}/events`, {
           method: "POST",
           mode: "cors",
           body: JSON.stringify(event),
@@ -350,7 +350,8 @@ app.put("/events", async (req, res) => {
 
         // Send the SongCreated event to the query service
         // in POST requests with the event object
-        let sentEvent = await fetch(`http://localhost:${port}/events`, {
+        let sentEvent = await fetch(`http://query:4002/events`, {
+          // let sentEvent = await fetch(`http://localhost:${port}/events`, {
           method: "PUT",
           mode: "cors",
           body: JSON.stringify(event),
@@ -514,8 +515,8 @@ app.delete("/api/events", async (req, res) => {
 
         // Send the SongCreated event to the query service
         // in POST requests with the event object
-        // let sentEvent = await fetch(`http://query:${port}/events`, {
-        let sentEvent = await fetch(`http://localhost:${port}/api/song`, {
+        let sentEvent = await fetch(`http://query:4002/api/song`, {
+          // let sentEvent = await fetch(`http://localhost:${port}/api/song`, {
           method: "DELETE",
           mode: "cors",
           body: JSON.stringify({ event }),
@@ -615,8 +616,8 @@ app.delete("/api/events", async (req, res) => {
 
   if (type === "ModeDeleted") {
     let id = Number(event.id);
-    // let sentEvent = await fetch(`http://modes:4003/api/mode`, {
-    let sentEvent = await fetch(`http://localhost:4003/api/mode`, {
+    let sentEvent = await fetch(`http://modes:4003/api/mode`, {
+      // let sentEvent = await fetch(`http://localhost:4003/api/mode`, {
       method: "DELETE",
       mode: "cors",
       headers: {

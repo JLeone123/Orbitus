@@ -9,7 +9,7 @@
 	let audioUrl = song.audioUrl;
 	let audio = new Audio(audioUrl);
 	let isPlaying = false;
-	$: innerWidth = 0; // can remove
+	$: innerWidth = window.innerWidth; // can remove
 	audio.setAttribute('id', `${songId}-${artistId}`);
 
 	let duration = 0;
