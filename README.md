@@ -10,6 +10,8 @@ A playlist generator using Svelte, Bootstrap 5, Node.js, Express.js, and Postgre
 
 #### All Music Credits and Licenses for each song are here in this readme file.
 
+<hr/>
+
 ### Indie genre
 
 <hr>
@@ -49,6 +51,8 @@ License code: JNBOHYTLVU4CT97O
 
 Other: Music from #Uppbeat
 https://uppbeat.io/t/the-lakes/steadfast
+
+<hr/>
 
 ### Folk
 
@@ -126,6 +130,8 @@ License code: WFOE4BHQRP14FLLT
 Other: Music from #Uppbeat
 https://uppbeat.io/t/asher-lee/dance-with-me
 
+<hr/>
+
 ### Country
 
 <hr>
@@ -174,6 +180,8 @@ License code: SPIAQIHSRNEVEFRF
 
 Other: Music from #Uppbeat
 https://uppbeat.io/t/tyler-edwards/a-few-good-hearts
+
+<hr/>
 
 ### Classical
 
