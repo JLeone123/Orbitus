@@ -1,6 +1,6 @@
 # Orbitus-V2.22
 
-A playlist generator using Svelte, Bootstrap 5, Node.js, Express.js, and PostgreSQL
+A web application using SvelteKit, Bootstrap5, Node.js, Express.js, PM2, Prisma PostgreSQL, AWS S3, CloudFront, and Docker Compose to add, update, and delete a user's songs and generate playlists based on genres and characteristics.
 
 ## Music Credit - All songs used from [Uppbeat](https://uppbeat.io/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2jZT-9FNmwP6WWtToyG52bA_ebnKFkOpXfCUlFyoHtsW8_EWIYZYIaAjwAEALw_wcB)
 
