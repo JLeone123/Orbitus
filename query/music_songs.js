@@ -13,10 +13,10 @@ let songOne = {
   artist_name: "Justin Lee", // artist_name cannot be null
   audio: "audio/eh1-1435340f-audio.mp3", // mp3 file path cannot be null
   image_art: "images/justin-lee-ea4adbb8-profile.avif", // if image_art is null, use
-  positivity: 80.0,
-  energy: 34.0,
+  positivity: 60.0,
+  energy: 50.0,
   rhythm: 50.0,
-  liveliness: 50.0,
+  liveliness: 30.0,
 };
 
 let songTwo = {
@@ -41,10 +41,10 @@ let songThree = {
   artist_name: "Tobias Voigt", // artist_name cannot be null
   audio: "audio/haw-6a84eeff-audio.mp3", // mp3 file path cannot be null
   image_art: "images/tobias-voigt-60ec6760-profile.avif", // if image_art is null, use artist image
-  positivity: 90.0,
-  energy: 99.0,
-  rhythm: 75.0,
-  liveliness: 60.0,
+  positivity: 60.0,
+  energy: 75.0,
+  rhythm: 50.0,
+  liveliness: 75.0,
 };
 
 let songFour = {
@@ -55,10 +55,10 @@ let songFour = {
   artist_name: "The Lakes", // artist_name cannot be null
   audio: "audio/s32-50c3327b-audio.mp3", // mp3 file path cannot be null
   image_art: "images/the-lakes-4b696865-profile.avif", // if image_art is null, use artist image
-  positivity: 50.0,
-  energy: 30.0,
-  rhythm: 32.0,
-  liveliness: 50.0,
+  positivity: 90.0,
+  energy: 76.0,
+  rhythm: 80.0,
+  liveliness: 80.0,
 };
 
 let songFive = {
@@ -69,7 +69,7 @@ let songFive = {
   artist_name: "Corals", // artist_name cannot be null
   audio: "audio/mp5-71f02aad-audio.mp3", // mp3 file path cannot be null
   image_art: "images/corals-a4a6074f-profile.avif", // if image_art is null, use artist image
-  positivity: 70,
+  positivity: 30,
   energy: 30,
   rhythm: 30,
   liveliness: 30,
@@ -83,10 +83,10 @@ let songSix = {
   artist_name: "Jacob Nicou",
   audio: "audio/s15-d911d55c-audio.mp3",
   image_art: "images/jacob-nicou-1248f20c-profile.avif",
-  positivity: 30,
-  energy: 70,
-  rhythm: 70,
-  liveliness: 70,
+  positivity: 60,
+  energy: 60,
+  rhythm: 50,
+  liveliness: 50,
 };
 
 let songSeven = {
@@ -97,10 +97,10 @@ let songSeven = {
   artist_name: "Justin Lee", // artist_name cannot be null
   audio: "audio/db7-6c1f2b89-audio.mp3", // mp3 file path cannot be null
   image_art: "images/justin-lee-ea4adbb8-profile.avif", // if image_art is null, use artist image
-  positivity: 25,
-  energy: 50,
-  rhythm: 75,
-  liveliness: 95,
+  positivity: 30,
+  energy: 30,
+  rhythm: 30,
+  liveliness: 30,
 };
 
 let songEight = {
@@ -111,10 +111,10 @@ let songEight = {
   artist_name: "Sky Toes",
   audio: "audio/rf3-8426d753-audio.mp3",
   image_art: "images/sky-toes-f3fddefc-profile.avif",
-  positivity: 90,
-  energy: 75,
-  rhythm: 50,
-  liveliness: 25,
+  positivity: 76,
+  energy: 76,
+  rhythm: 76,
+  liveliness: 76,
 };
 
 let songNine = {
@@ -125,10 +125,10 @@ let songNine = {
   artist_name: "Justin Lee",
   audio: "audio/hha-0becc7ca-audio.mp3", //
   image_art: "images/justin-lee-ea4adbb8-profile.avif",
-  positivity: 70,
-  energy: 50,
-  rhythm: 70,
-  liveliness: 70,
+  positivity: 50,
+  energy: 30,
+  rhythm: 30,
+  liveliness: 30,
 };
 
 let songTen = {
@@ -139,10 +139,10 @@ let songTen = {
   artist_name: "The Lakes",
   audio: "audio/pb1-f895d7af-audio.mp3",
   image_art: "images/the-lakes-4b696865-profile.avif",
-  positivity: 70,
-  energy: 70,
-  rhythm: 70,
-  liveliness: 70,
+  positivity: 60,
+  energy: 80,
+  rhythm: 40,
+  liveliness: 20,
 };
 
 let songEleven = {
@@ -153,10 +153,10 @@ let songEleven = {
   artist_name: "Light Patterns",
   audio: "audio/t2k-fbd3a7b2-audio.mp3",
   image_art: "images/light-patterns-4abbb0de-profile.avif",
-  positivity: 30,
-  energy: 30,
-  rhythm: 30,
-  liveliness: 30,
+  positivity: 31,
+  energy: 32,
+  rhythm: 33,
+  liveliness: 33.33,
 };
 
 let songTwelve = {
@@ -167,10 +167,10 @@ let songTwelve = {
   artist_name: "Asher Lee",
   audio: "audio/dwm-9bb46898-audio.mp3",
   image_art: "images/asher-lee-04f4a1c8-profile.avif",
-  positivity: 80,
-  energy: 70,
-  rhythm: 60,
-  liveliness: 50,
+  positivity: 75.0,
+  energy: 75.0,
+  rhythm: 75.0,
+  liveliness: 74.99,
 };
 
 let songThirteen = {
@@ -181,10 +181,10 @@ let songThirteen = {
   artist_name: "Arbour Season",
   audio: "audio/asd-4a72d6a6-audio.mp3",
   image_art: "images/arbour-season-a9a8812a-profile.avif",
-  positivity: 75,
-  energy: 60,
-  rhythm: 90,
-  liveliness: 90,
+  positivity: 60.0,
+  energy: 30.0,
+  rhythm: 30.0,
+  liveliness: 45.67,
 };
 
 let songFourteen = {
@@ -195,8 +195,8 @@ let songFourteen = {
   artist_name: "Justin LaPoint",
   audio: "audio/wos-69327d39-audio.mp3",
   image_art: "images/justin-lapoint-c743beaf-profile.avif",
-  positivity: 60,
-  energy: 50,
+  positivity: 30,
+  energy: 60,
   rhythm: 60,
   liveliness: 70,
 };
@@ -209,10 +209,10 @@ let songFifteen = {
   artist_name: "Arbour Season",
   audio: "audio/r04-f4c65064-audio.mp3",
   image_art: "images/arbour-season-a9a8812a-profile.avif",
-  positivity: 70,
-  energy: 70,
-  rhythm: 80,
-  liveliness: 80,
+  positivity: 74,
+  energy: 74,
+  rhythm: 74,
+  liveliness: 74,
 };
 
 let songSixteen = {
@@ -223,10 +223,10 @@ let songSixteen = {
   artist_name: "Hemlock",
   audio: "audio/mvi-4bd8e281-audio.mp3",
   image_art: "images/hemlock-ab4cad19-profile.avif",
-  positivity: 65,
-  energy: 65,
-  rhythm: 70,
-  liveliness: 50,
+  positivity: 76,
+  energy: 76,
+  rhythm: 76,
+  liveliness: 76,
 };
 
 //
@@ -239,10 +239,10 @@ let songSeventeen = {
   artist_name: "Tyler Edwards",
   audio: "audio/afg-63e4609a-audio.mp3",
   image_art: "images/tyler-edwards-0ce084cd-profile.avif",
-  positivity: 75,
-  energy: 80,
-  rhythm: 90,
-  liveliness: 50,
+  positivity: 60,
+  energy: 65,
+  rhythm: 50,
+  liveliness: 65,
 };
 
 let songEighteen = {
@@ -253,10 +253,10 @@ let songEighteen = {
   artist_name: "Monument Music",
   audio: "audio/mwa-a2e90722-audio.mp3",
   image_art: "images/monument-music-3f4957a4-profile.avif",
-  positivity: 80,
-  energy: 80,
-  rhythm: 70,
-  liveliness: 60,
+  positivity: 95,
+  energy: 91,
+  rhythm: 91,
+  liveliness: 75,
 };
 
 let songNineteen = {
@@ -267,10 +267,10 @@ let songNineteen = {
   artist_name: "Dominique Charpentier",
   audio: "audio/tra-6d1406be-audio.mp3",
   image_art: "images/dominique-charpentier-8e15e30b-profile.avif",
-  positivity: 50,
-  energy: 75,
-  rhythm: 75,
-  liveliness: 90,
+  positivity: 91,
+  energy: 91,
+  rhythm: 91,
+  liveliness: 75,
 };
 
 let songTwenty = {
@@ -281,10 +281,10 @@ let songTwenty = {
   artist_name: "Arend",
   audio: "audio/csn-022a1d3c-audio.mp3",
   image_art: "images/arend-3686bd7b-profile.avif",
-  positivity: 70,
-  energy: 50,
-  rhythm: 90,
-  liveliness: 25,
+  positivity: 75.01,
+  energy: 75.01,
+  rhythm: 75.01,
+  liveliness: 75.01,
 };
 
 let songTwentyOne = {
@@ -295,10 +295,10 @@ let songTwentyOne = {
   artist_name: "Dan Barracuda",
   audio: "audio/rsl-e3194b9a-audio.mp3",
   image_art: "images/dan-barracuda-06ed7bb4-profile.avif",
-  positivity: 50,
-  energy: 30,
-  rhythm: 75,
-  liveliness: 25,
+  positivity: 70,
+  energy: 70,
+  rhythm: 80,
+  liveliness: 80,
 };
 
 let songTwentyTwo = {
@@ -309,10 +309,10 @@ let songTwentyTwo = {
   artist_name: "Cory Alstad",
   audio: "audio/wwk-24bd0a13-audio.mp3",
   image_art: "images/cory-alstad-5ff7ceb3-profile.avif",
-  positivity: 55,
-  energy: 50,
-  rhythm: 60,
-  liveliness: 50,
+  positivity: 30,
+  energy: 29,
+  rhythm: 28,
+  liveliness: 27,
 };
 
 let songTwentyThree = {
@@ -323,10 +323,10 @@ let songTwentyThree = {
   artist_name: "Evoli",
   audio: "audio/rpf-802c27ed-audio.mp3",
   image_art: "images/evoli-89b50d07-profile.avif",
-  positivity: 50,
+  positivity: 60,
   energy: 95,
-  rhythm: 95,
-  liveliness: 95,
+  rhythm: 85,
+  liveliness: 75,
 };
 
 let songTwentyFour = {
@@ -337,10 +337,10 @@ let songTwentyFour = {
   artist_name: "Philip Anderson",
   audio: "audio/ach-ff5a99da-audio.mp3",
   image_art: "images/philip-anderson-5c515158-profile.avif",
-  positivity: 90,
-  energy: 90,
-  rhythm: 90,
-  liveliness: 60,
+  positivity: 75,
+  energy: 49.99,
+  rhythm: 49.99,
+  liveliness: 74.44,
 };
 
 let songTwentyFive = {

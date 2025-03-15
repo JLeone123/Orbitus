@@ -401,7 +401,7 @@ app.put("/api/song", cpUpload, async (req, res) => {
     }
   });
 
-  if (mp3AudioCount > 1 && imageSongCoverCount > 1) {
+  if (mp3AudioCount > 1 && imageSongCoverCount >= 1) {
     await SongsQuery.deleteSong(songs[0]["id"]);
     res
       .status(200)
