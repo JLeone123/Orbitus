@@ -35,6 +35,11 @@
 		});
 
 		await fetchSongs();
+
+		// Remove form inputs
+		document.getElementById('d-song-name-input').value = '';
+		document.getElementById('d-artist-name-input').value = '';
+
 		FetchingStore.set(false);
 	};
 </script>
