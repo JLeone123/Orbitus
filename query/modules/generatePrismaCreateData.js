@@ -146,6 +146,8 @@ export const generatePrismaCreateData = (songCharacteristics) => {
     liveliness,
     songName,
     artistName,
+    songExtension,
+    coverArtExtension,
   } = songCharacteristics;
 
   // going to need to create an artist database at some point.
@@ -158,7 +160,7 @@ export const generatePrismaCreateData = (songCharacteristics) => {
   // song name, then return.
 
   let newSongId = generateSongId(songName);
-  let newArtistId = generateSongId(artistName);
+  let newArtistId = generateArtistId(artistName);
 
   let data = {};
   data["genre"] = genre;
@@ -166,8 +168,8 @@ export const generatePrismaCreateData = (songCharacteristics) => {
   data["title"] = songName;
   data["song_id"] = newSongId;
   data["artist_name"] = artistName;
-  data["audio"] = `audio/${newArtistId}`;
-  data["image_art"] = `images/${newSongId}`;
+  data["audio"] = `audio/${newSongId}-audio.${songExtension}`;
+  data["image_art"] = `images/${newArtistId}-profile.${coverArtExtension}`;
   data["positivity"] = positivity;
   data["energy"] = energy;
   data["rhythm"] = rhythm;

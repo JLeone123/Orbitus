@@ -207,20 +207,29 @@ app.post("/api/song", cpUpload, async (req, res) => {
 
   let { newData, newMp3Audio, newSongCover } = newCharacteristics;
 
+  // Get song and image art extensions
+  let originalSongName = newMp3Audio["originalname"];
+  let originalArtistName = newSongCover["originalname"];
+  let songExtension = originalSongName.slice(originalSongName.lastIndexOf(".") + 1);
+  let coverArtExtension = originalArtistName.slice(originalArtistName.lastIndexOf(".") + 1);
+
+  newData['songExtension'] = songExtension;
+  newData['coverArtExtension'] = coverArtExtension;
+
   let data = generatePrismaCreateData(newData);
 
   const imageParams = {
     Bucket: bucketName,
     Key: `${data["image_art"]}`,
     Body: newSongCover.buffer,
-    ContentType: newSongCover.mimetype,
+    ContentType: `image/${coverArtExtension}`,
   };
 
   const songParams = {
     Bucket: bucketName,
     Key: `${data["audio"]}`,
     Body: newMp3Audio.buffer,
-    ContentType: newMp3Audio.mimetype,
+    ContentType: `audio/${songExtension}`,
   };
 
   const createImageCommand = new PutObjectCommand(imageParams);
@@ -335,6 +344,20 @@ app.put("/api/song", cpUpload, async (req, res) => {
   }
 
   let { newData, newMp3Audio, newSongCover } = newCharacteristics;
+
+  // Get song and image art extensions
+  let originalSongName = newMp3Audio["originalname"];
+  let originalArtistName = newSongCover["originalname"];
+  let songExtension = originalSongName.slice(
+    originalSongName.lastIndexOf(".") + 1
+  );
+  let coverArtExtension = originalArtistName.slice(
+    originalArtistName.lastIndexOf(".") + 1
+  );
+
+  newData["songExtension"] = songExtension;
+  newData["coverArtExtension"] = coverArtExtension;
+
   let data = generatePrismaCreateData(newData);
   let queryData = {
     title: songName,
@@ -363,14 +386,14 @@ app.put("/api/song", cpUpload, async (req, res) => {
     Bucket: bucketName,
     Key: `${data["image_art"]}`,
     Body: newSongCover["buffer"],
-    ContentType: newSongCover["mimetype"],
+    ContentType: `image/${coverArtExtension}`,
   };
 
   const songParams = {
     Bucket: bucketName,
     Key: `${data["audio"]}`,
     Body: newMp3Audio["buffer"],
-    ContentType: newMp3Audio["mimetype"],
+    ContentType: `audio/${songExtension}`,
   };
 
   const createImageCommand = new PutObjectCommand(imageParams);
