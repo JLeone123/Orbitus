@@ -133,6 +133,5 @@ export const validateCharacteristics = (songCharacteristics, image, audio) => {
     .join("");
   newCharacteristics["newMp3Audio"] = mp3Audio;
   newCharacteristics["newSongCover"] = songCover;
-  //   console.log(newCharacteristics);
   return newCharacteristics;
 };

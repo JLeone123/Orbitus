@@ -148,6 +148,8 @@ export const generatePrismaCreateData = (songCharacteristics) => {
     artistName,
     songExtension,
     coverArtExtension,
+    songId,
+    artistId,
   } = songCharacteristics;
 
   // going to need to create an artist database at some point.
@@ -158,9 +160,8 @@ export const generatePrismaCreateData = (songCharacteristics) => {
 
   // If the song exists in the database with the same artist and
   // song name, then return.
-
-  let newSongId = generateSongId(songName);
-  let newArtistId = generateArtistId(artistName);
+  let newSongId = songId ? songId : generateSongId(songName);
+  let newArtistId = artistId ? artistId : generateArtistId(artistName);
 
   let data = {};
   data["genre"] = genre;
@@ -174,18 +175,6 @@ export const generatePrismaCreateData = (songCharacteristics) => {
   data["energy"] = energy;
   data["rhythm"] = rhythm;
   data["liveliness"] = liveliness;
+
   return data;
 };
-
-// {
-//     genre,
-//     artist_id: `${songCover.originalname}`, // can change once this is functioning.
-//     title: songName,
-//     song_id: `${mp3Audio.originalname}`,
-//     artist_name: artistName,
-//     audio: `audio/${mp3Audio.originalname}`,
-//     image_art: `images/${songCover.originalname}`,
-//     positivity: Number(positivity),
-//     energy: Number(energy),
-//     rhythm: Number(rhythm),
-//     liveliness: Number(liveliness),

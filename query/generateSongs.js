@@ -26,6 +26,7 @@ const prisma = new PrismaClient()
 async function main() {
   /*** create songs in prisma ******/
   await prisma.song.deleteMany({});
+  
   for (let song of songData) {
     let newSong = await prisma.song.create({
       data: {
