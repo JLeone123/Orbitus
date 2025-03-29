@@ -16,8 +16,6 @@ export const deleteSongsInCloud = async (
   // If there are multiple songs that use the same cover art,
   // then remove the song and cover art objects from AWS.
 
-  console.log(_mp3AudioCount, _imageSongCoverCount);
-
   if (_mp3AudioCount >= 1 && _imageSongCoverCount === 1) {
     s3Params["Key"] = `${songs[0]["audio"]}`;
     const musicCommand = new DeleteObjectCommand(s3Params);

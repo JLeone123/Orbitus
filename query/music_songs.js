@@ -26,7 +26,7 @@ let songTwo = {
   song_id: "bnd-8ed742f6",
   artist_name: "Sky Toes", // artist_name cannot be null
   audio: "audio/bnd-8ed742f6-audio.mp3", // mp3 file path cannot be null
-  image_art: "images/sky-toes-f3fddefc-profile.avif", // if image_art is null, use artist image
+  image_art: "images/sky-toes-f3fddefc-profile.png", // if image_art is null, use artist image
   positivity: 90.0,
   energy: 75.0,
   rhythm: 50.0,
@@ -110,7 +110,7 @@ let songEight = {
   song_id: "rf3-8426d753",
   artist_name: "Sky Toes",
   audio: "audio/rf3-8426d753-audio.mp3",
-  image_art: "images/sky-toes-f3fddefc-profile.avif",
+  image_art: "images/sky-toes-f3fddefc-profile.png",
   positivity: 76,
   energy: 76,
   rhythm: 76,

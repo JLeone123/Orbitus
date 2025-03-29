@@ -560,7 +560,6 @@ app.delete("/api/song", async (req, res) => {
   let mp3AudioCount = 0;
 
   artistSongs.forEach((song) => {
-    console.log(song);
     if (song["audio"].slice(6) === mp3AudioName) {
       mp3AudioCount++;
     }
