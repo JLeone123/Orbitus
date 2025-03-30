@@ -159,7 +159,8 @@ export const generatePrismaCreateData = (songCharacteristics) => {
   // then use that artist id.  If not, then create a new artist id.
 
   // If the song exists in the database with the same artist and
-  // song name, then return.
+  // song name, then keep the songId and artistId. If that is not
+  // the case, then generate either a new song ID or artist ID.
   let newSongId = songId ? songId : generateSongId(songName);
   let newArtistId = artistId ? artistId : generateArtistId(artistName);
 

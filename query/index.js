@@ -28,6 +28,7 @@ import { validateCharacteristics } from "./modules/validateCharacteristics.js";
 import { generatePrismaCreateData } from "./modules/generatePrismaCreateData.js";
 import { validateMode } from "./modules/validateMode.js";
 import { deleteSongsInCloud } from "./modules/deleteSongsInCloud.js";
+import { deleteArtworkInCloud } from "./modules/deleteArtworkInCloud.js";
 
 // Install middleware, use Morgan for logging requests.
 const app = express();
@@ -185,13 +186,14 @@ app.post("/api/song", cpUpload, async (req, res) => {
   let mp3Audio = req.files.mp3Audio;
   let songCover = req.files.songCover;
 
+  // Validate new song's characteristics
   let newCharacteristics = validateCharacteristics(
     req.body,
     mp3Audio,
     songCover
   );
 
-  // Sending appropriate message in the respoonse in the case
+  // Sending appropriate message in the response in the case
   // the song could not be created.
   if (!newCharacteristics) {
     res
@@ -209,22 +211,26 @@ app.post("/api/song", cpUpload, async (req, res) => {
 
   // Get song and image art extensions
   let originalSongName = newMp3Audio["originalname"];
-  let originalArtistName = newSongCover["originalname"];
+  let originalArtName = newSongCover["originalname"];
   let songExtension = originalSongName.slice(
     originalSongName.lastIndexOf(".") + 1
   );
-  let coverArtExtension = originalArtistName.slice(
-    originalArtistName.lastIndexOf(".") + 1
+  let coverArtExtension = originalArtName.slice(
+    originalArtName.lastIndexOf(".") + 1
   );
 
+  // Check if the song is in the database
+  // with the validated song and artist names.
   const songCheck = await SongsQuery.filterSongs({
     title: newData["songName"],
+    artist_name: newData["artistName"],
   });
+
   const artistCheck = await SongsQuery.filterSongs({
     artist_name: newData["artistName"],
   });
 
-  // Checking to see if the artist ID or song ID is in the database,
+  // Checking to see if the artist ID and song ID is in the database,
   // can better implement this at some point.
   let songId = "";
   let artistId = "";
@@ -352,33 +358,12 @@ app.put("/api/song", cpUpload, async (req, res) => {
   let mp3Audio = req.files.mp3Audio;
   let songCover = req.files.songCover;
 
+  // Validate song data.
   let newCharacteristics = validateCharacteristics(
     songCharacteristics,
     mp3Audio,
     songCover
   );
-
-  let queryData = {
-    title: newCharacteristics["newData"]["songName"],
-    artist_name: newCharacteristics["newData"]["artistName"],
-  };
-
-  // Get matching songs from db
-  // can update to work with song ids
-  // at some point!
-  const songs = await SongsQuery.filterSongs(queryData);
-
-  if (songs.length === 0) {
-    res.status(404).send({
-      msg: "No songs were found with the given song and artist name!",
-    });
-    return;
-  }
-
-  // Getting the song and artist IDs
-  // to properly update AWS.
-  const songId = songs[0]["song_id"];
-  const artistId = songs[0]["artist_id"];
 
   if (!newCharacteristics) {
     res.status(400).send({
@@ -390,9 +375,52 @@ app.put("/api/song", cpUpload, async (req, res) => {
     return;
   }
 
+  // Get matching songs from db. This can be updated at some point to work
+  // directly with song ids
+  let queryData = {
+    title: newCharacteristics["newData"]["songName"],
+    artist_name: newCharacteristics["newData"]["artistName"],
+  };
+
+  const songs = await SongsQuery.filterSongs(queryData);
+
+  if (songs.length === 0) {
+    res.status(404).send({
+      msg: "No songs were found with the given song and artist name!",
+    });
+    return;
+  }
+
+  const artistQueryData = {
+    artist_name: artistName,
+  };
+
+  // Delete found songs in the S3 bucket
+  // and invalidate the CloudFront cache
+  let params = {
+    Bucket: bucketName,
+  };
+
+  const cloudFrontSongParams = {
+    DistributionId: cloudFrontDistId,
+    InvalidationBatch: {
+      CallerReference: generateUniqueCallerReference(),
+      Paths: {
+        Quantity: 1,
+      },
+    },
+  };
+
+  await deleteSongsInCloud(songs, s3, cloudFront, params, cloudFrontSongParams);
+
+  // Getting the song and artist IDs
+  // to properly update AWS.
+  const songId = songs[0]["song_id"];
+  const artistId = songs[0]["artist_id"];
+
   let { newData, newMp3Audio, newSongCover } = newCharacteristics;
 
-  // Get song and image art extensions
+  // Get song and image art extensions to generate image file path
   let originalSongName = newMp3Audio["originalname"];
   let originalArtistName = newSongCover["originalname"];
   let songExtension = originalSongName.slice(
@@ -402,6 +430,9 @@ app.put("/api/song", cpUpload, async (req, res) => {
     originalArtistName.lastIndexOf(".") + 1
   );
 
+  // Prepare argument for generatePrismaCreateData.
+  // This is to ensure that the correct extension is passed
+  // to the new song data.
   newData["songExtension"] = songExtension;
   newData["coverArtExtension"] = coverArtExtension;
   newData["songId"] = songId;
@@ -409,84 +440,53 @@ app.put("/api/song", cpUpload, async (req, res) => {
 
   let data = generatePrismaCreateData(newData);
 
-  // Updating the songs in the db
-  for (let song of songs) {
-    await SongsQuery.updateSong(song["id"], data);
-  }
-
-  let artistQueryData = {
-    artist_name: artistName,
-  };
-
-  // Determining cases for deleting song and/or image
-  // objects from S3.
-  const mp3AudioName = songs[0]["audio"].slice(6);
-  const songCoverName = songs[0]["image_art"].slice(7);
-
-  const artistSongs = await SongsQuery.filterSongs(artistQueryData);
-
-  let imageSongCoverCount = 0;
-  let mp3AudioCount = 0;
-
-  artistSongs.forEach((song) => {
-    if (song["audio"].slice(6) === mp3AudioName) {
-      mp3AudioCount++;
-    }
-
-    if (song["image_art"].slice(7) === songCoverName) {
-      imageSongCoverCount++;
-    }
-  });
-
-  // Update songParams and imageParams to delete the old image and
-  // invalidate the CloudFront cache
-
-  // Deleting the old song data from the s3 bucket
-  let params = {
+  // Add the song object back to AWS.
+  const songParams = {
     Bucket: bucketName,
+    Key: `${data["audio"]}`,
+    Body: newMp3Audio.buffer,
+    ContentType: `audio/${songExtension}`,
   };
 
-  // Delete Songs from Amazon
-  const cloudFrontParams = {
+  const createSongCommand = new PutObjectCommand(songParams);
+  await s3.send(createSongCommand);
+
+  // Get number of artist songs to ensure artwork is not deleted.
+  const artistSongs = await SongsQuery.filterSongs(artistQueryData);
+  const imageArtwork = songs[0]["title"];
+
+  const cloudFrontImageParams = {
     DistributionId: cloudFrontDistId,
     InvalidationBatch: {
       CallerReference: generateUniqueCallerReference(),
       Paths: {
-        Quantity: 2,
+        Quantity: 1,
       },
     },
   };
 
-  await deleteSongsInCloud(
-    songs,
+  await deleteArtworkInCloud(
+    artistSongs,
     s3,
     cloudFront,
     params,
-    cloudFrontParams,
-    mp3AudioCount,
-    imageSongCoverCount
+    cloudFrontImageParams,
+    imageArtwork
   );
 
-  // Adding the new song data to s3 bucket
   const imageParams = {
     Bucket: bucketName,
     Key: `${data["image_art"]}`,
-    Body: newSongCover["buffer"],
+    Body: newSongCover.buffer,
     ContentType: `image/${coverArtExtension}`,
-  };
-
-  const songParams = {
-    Bucket: bucketName,
-    Key: `${data["audio"]}`,
-    Body: newMp3Audio["buffer"],
-    ContentType: `audio/${songExtension}`,
   };
 
   const createImageCommand = new PutObjectCommand(imageParams);
   await s3.send(createImageCommand);
 
-  const createSongCommand = new PutObjectCommand(songParams);
-  await s3.send(createSongCommand);
+  for (let song of songs) {
+    await SongsQuery.updateSong(song["id"], data);
+  }
 
   // Send success message
   res.status(200).send({
@@ -515,13 +515,11 @@ app.delete("/api/song", async (req, res) => {
   // The user can choose which song to delete, which will send a fetch request
   // to this endpoint. will be able to delete the song using this query here.
   const { event } = req.body;
+
+  // Get song and artist name to delete from the SongDeleted event.
   const { songName, artistName } = event["data"];
 
-  let queryData = {
-    title: songName,
-    artist_name: artistName,
-  };
-
+  // Validate song and artistName.
   if (
     !songName ||
     !artistName ||
@@ -539,6 +537,12 @@ app.delete("/api/song", async (req, res) => {
     return;
   }
 
+  let queryData = {
+    title: songName,
+    artist_name: artistName,
+  };
+
+  // Check if song is in the database.
   const songs = await SongsQuery.filterSongs(queryData);
 
   if (songs.length === 0) {
@@ -547,52 +551,47 @@ app.delete("/api/song", async (req, res) => {
     return;
   }
 
-  let artistQueryData = {
-    artist_name: artistName,
-  };
-
-  const mp3AudioName = songs[0]["audio"].slice(6);
-  const songCoverName = songs[0]["image_art"].slice(7);
-
-  const artistSongs = await SongsQuery.filterSongs(artistQueryData);
-
-  let imageSongCoverCount = 0;
-  let mp3AudioCount = 0;
-
-  artistSongs.forEach((song) => {
-    if (song["audio"].slice(6) === mp3AudioName) {
-      mp3AudioCount++;
-    }
-
-    if (song["image_art"].slice(7) === songCoverName) {
-      imageSongCoverCount++;
-    }
-  });
-
   let params = {
     Bucket: bucketName,
   };
 
-  const cloudFrontParams = {
+  const cloudFrontSongParams = {
     DistributionId: cloudFrontDistId,
     InvalidationBatch: {
       CallerReference: generateUniqueCallerReference(),
       Paths: {
-        Quantity: 2,
+        Quantity: 1,
       },
     },
   };
 
   // Delete found songs in the S3 bucket
   // and invalidate the CloudFront cache
-  await deleteSongsInCloud(
-    songs,
+  await deleteSongsInCloud(songs, s3, cloudFront, params, cloudFrontSongParams);
+
+  const artistSongs = await SongsQuery.filterSongs({
+    artist_name: songs[0]["artist_name"],
+  });
+
+  let imageArtwork = songs[0]["image_art"];
+
+  const cloudFrontImageParams = {
+    DistributionId: cloudFrontDistId,
+    InvalidationBatch: {
+      CallerReference: generateUniqueCallerReference(),
+      Paths: {
+        Quantity: 1,
+      },
+    },
+  };
+
+  await deleteArtworkInCloud(
+    artistSongs,
     s3,
     cloudFront,
     params,
-    cloudFrontParams,
-    mp3AudioCount,
-    imageSongCoverCount
+    cloudFrontImageParams,
+    imageArtwork
   );
 
   // Deleting the songs from the database
