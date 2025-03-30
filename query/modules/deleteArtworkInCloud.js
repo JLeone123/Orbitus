@@ -12,6 +12,7 @@ export const deleteArtworkInCloud = async (
   _imageArtwork
 ) => {
   let artworkCount = 0;
+  console.log(artistSongs);
 
   for (let song of artistSongs) {
     if (song["image_art"] === _imageArtwork) {
@@ -23,12 +24,12 @@ export const deleteArtworkInCloud = async (
     let s3Params = JSON.parse(JSON.stringify(_s3Params));
     let cloudFrontParams = JSON.parse(JSON.stringify(_cloudFrontParams));
 
-    s3Params["Key"] = `${artistSongs[0]["image_art"]}`;
+    s3Params["Key"] = `${_imageArtwork}`;
     const imageCommand = new DeleteObjectCommand(s3Params);
     await s3Client.send(imageCommand);
 
     cloudFrontParams["InvalidationBatch"]["Paths"]["Items"] = [
-      "/" + `${artistSongs[0]["image_art"]}`,
+      "/" + `${_imageArtwork}`,
     ];
     const cloudFrontSongCommand = new CreateInvalidationCommand(
       cloudFrontParams

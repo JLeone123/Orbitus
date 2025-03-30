@@ -35,7 +35,7 @@
     "@aws-sdk/client-cloudfront": "^3.738.0",
     "@aws-sdk/client-s3": "^3.735.0",
     "@aws-sdk/cloudfront-signer": "^3.734.0",
-    "@prisma/client": "^6.2.1",
+    "@prisma/client": "^6.5.0",
     "@prisma/extension-accelerate": "^1.2.1",
     "@prisma/extension-pulse": "^1.2.0",
     "cors": "^2.8.5",
@@ -50,6 +50,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
-    "prisma": "^6.2.1"
+    "prisma": "^6.5.0"
   }
 }

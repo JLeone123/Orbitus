@@ -64,7 +64,7 @@
 
 		await fetchSongs();
 
-		document.getElementById('a-genre-input').value = '';
+		document.getElementById('a-genre-input').selectedIndex = 0;
 		document.getElementById('a-song-name-input').value = '';
 		document.getElementById('a-artist-name-input').value = '';
 		document.getElementById('a-mp3-audio-input').value = '';
