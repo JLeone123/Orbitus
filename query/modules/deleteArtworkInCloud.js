@@ -12,7 +12,6 @@ export const deleteArtworkInCloud = async (
   _imageArtwork
 ) => {
   let artworkCount = 0;
-  console.log(artistSongs);
 
   for (let song of artistSongs) {
     if (song["image_art"] === _imageArtwork) {

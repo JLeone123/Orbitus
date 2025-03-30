@@ -19,7 +19,6 @@ export const deleteSongsInCloud = async (
     // Invalidating the music data in the
     // CloudFront cache by removing
     // each song object.
-
     s3Params["Key"] = `${song["audio"]}`;
     const musicCommand = new DeleteObjectCommand(s3Params);
     await s3Client.send(musicCommand);

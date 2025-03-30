@@ -453,7 +453,7 @@ app.put("/api/song", cpUpload, async (req, res) => {
 
   // Get number of artist songs to ensure artwork is not deleted.
   const artistSongs = await SongsQuery.filterSongs(artistQueryData);
-  const imageArtwork = songs[0]["title"];
+  const imageArtwork = songs[0]["image_art"];
 
   const cloudFrontImageParams = {
     DistributionId: cloudFrontDistId,

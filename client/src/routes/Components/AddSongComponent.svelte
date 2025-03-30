@@ -1,5 +1,4 @@
 <script>
-	import axios from 'axios';
 	import { Mp3Store } from '../stores-folder/mp3Store.js';
 	import { SongCoverStore } from '../stores-folder/songCoverStore.js';
 	import { FetchingStore } from '../stores-folder/fetchingStore.js';
