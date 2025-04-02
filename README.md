@@ -1,12 +1,21 @@
 # Orbitus-V2.22
 
-## Demo Video
+## Description
+This project is a playlist generator lets clients create, update, and delete songs using with their own audio files and cover art images.  It sorts these songs based on their user-defined genres and characteristics.
+
+## Tech stack used
+<ul>
+  <li>(Frontend) SvelteKit, Svelte, Bootstrap 5, Vite</li>
+  <li>(Backend) Express.js, Prisma Postgres (PostgreSQL as a service), PM2 (process manager)</li>
+  <li>(DevOps) Docker and Docker Compose (process manager)</li>
+  <li>(Cloud Computing) Amazon IAM, S3, and CloudFront</li>
+</ul>
+
+## Demo video
 
 ---
 
-<iframe src="https://drive.google.com/file/d/1vM8amhaDVc9uIJx50jTQ1hihggg2V183/preview" width="640" height="480" allow="autoplay"></iframe>
-
-A web application using SvelteKit, Bootstrap5, Node.js, Express.js, PM2, Prisma PostgreSQL, AWS S3, CloudFront, and Docker Compose to add, update, and delete a user's songs and generate playlists based on genres and characteristics.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gbXjjCbogY0?si=ah-PeRzgHDigtopE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Music Credit - All songs used from [Uppbeat](https://uppbeat.io/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2jZT-9FNmwP6WWtToyG52bA_ebnKFkOpXfCUlFyoHtsW8_EWIYZYIaAjwAEALw_wcB)
 
