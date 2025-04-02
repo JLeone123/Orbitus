@@ -15,7 +15,7 @@ This project is a playlist generator lets clients create, update, and delete son
 
 ---
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gbXjjCbogY0?si=ah-PeRzgHDigtopE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+![Click this image to watch the Demo Video on Youtube.](https://www.youtube.com/watch?v=gbXjjCbogY0).
 
 ## Music Credit - All songs used from [Uppbeat](https://uppbeat.io/?gad_source=1&gclid=Cj0KCQjw4cS-BhDGARIsABg4_J2jZT-9FNmwP6WWtToyG52bA_ebnKFkOpXfCUlFyoHtsW8_EWIYZYIaAjwAEALw_wcB)
 
