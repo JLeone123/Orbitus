@@ -1,4 +1,4 @@
-# Orbitus-V2.22
+# Orbitus
 
 ## Description
 This project is a playlist generator lets clients create, update, and delete songs using with their own audio files and cover art images.  It sorts these songs based on their user-defined genres and characteristics.
