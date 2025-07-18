@@ -8,7 +8,7 @@ This project is a playlist generator lets clients create, update, and delete son
   <li>(Frontend) SvelteKit, Svelte, Bootstrap 5, Vite</li>
   <li>(Backend) Express.js, Prisma Postgres (PostgreSQL as a service), PM2 (process manager)</li>
   <li>(DevOps) Docker and Docker Compose (process manager)</li>
-  <li>(Cloud Computing) Amazon IAM, S3, and CloudFront</li>
+  <li>(Cloud Services) Amazon IAM, S3, and CloudFront</li>
 </ul>
 
 ## License
