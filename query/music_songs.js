@@ -22,7 +22,7 @@ let songOne = {
 let songTwo = {
   genre: "indie",
   artist_id: "the-90s-surfers-abc39aa1",
-  title: "it was nice meeting you",
+  title: "it was nice meeting you, bro",
   song_id: "iwn-ee1490a5",
   artist_name: "The 90's Surfers",
   audio: "audio/iwn-ee1490a5-audio.mp3",
