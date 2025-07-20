@@ -827,3 +827,10 @@ http: {"message":"request","method":"DELETE","endpoint":"events"}
 http: {"message":"request","method":"POST","endpoint":"events"}
 http: {"message":"request","method":"DELETE","endpoint":"events"}
 http: {"message":"request","method":"POST","endpoint":"events"}
+http: {"message":"request","method":"DELETE","endpoint":"events"}
+http: {"message":"response","method":"DELETE","endpoint":"events","statusCode":400}
+http: {"message":"request","method":"DELETE","endpoint":"events"}
+http: {"message":"response","method":"DELETE","endpoint":"events","statusCode":400}
+http: {"message":"request","method":"DELETE","endpoint":"events"}
+http: {"message":"response","method":"DELETE","endpoint":"events","statusCode":400}
+http: {"message":"request","method":"DELETE","endpoint":"events"}
